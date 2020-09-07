@@ -1,0 +1,6 @@
+framework module Pods_RecipeMix {
+  umbrella header "Pods-RecipeMix-umbrella.h"
+
+  export *
+  module * { export * }
+}

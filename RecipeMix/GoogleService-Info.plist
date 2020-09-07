@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>37531900436-r3oauf4l3loi3pmk545u4el2aqpqi8j2.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.37531900436-r3oauf4l3loi3pmk545u4el2aqpqi8j2</string>
+	<key>API_KEY</key>
+	<string>AIzaSyAbb6mY7f9H4P3idtGc8xZ7HtBqYYC7FHs</string>
+	<key>GCM_SENDER_ID</key>
+	<string>37531900436</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.andrestello.RecipeMix</string>
+	<key>PROJECT_ID</key>
+	<string>recipemix-ad2aa</string>
+	<key>STORAGE_BUCKET</key>
+	<string>recipemix-ad2aa.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:37531900436:ios:a4a8d647d9bb734ca0e501</string>
+	<key>DATABASE_URL</key>
+	<string>https://recipemix-ad2aa.firebaseio.com</string>
+</dict>
+</plist>
