@@ -15,6 +15,7 @@
 		4FC713E92505874D00C36FE6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4FC713E72505874D00C36FE6 /* LaunchScreen.storyboard */; };
 		4FC713F325058CD500C36FE6 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FC713F225058CD500C36FE6 /* HomeViewController.swift */; };
 		4FC713F52505AA8B00C36FE6 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4FC713F42505AA8B00C36FE6 /* GoogleService-Info.plist */; };
+		4FD5437B25086C77006FC9A1 /* Recipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FD5437A25086C77006FC9A1 /* Recipe.swift */; };
 		AF0DB3007D5C11163F8FFD62 /* Pods_RecipeMix.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3397ED5DD991500428C599C8 /* Pods_RecipeMix.framework */; };
 /* End PBXBuildFile section */
 
@@ -30,6 +31,7 @@
 		4FC713EA2505874D00C36FE6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4FC713F225058CD500C36FE6 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		4FC713F42505AA8B00C36FE6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		4FD5437A25086C77006FC9A1 /* Recipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recipe.swift; sourceTree = "<group>"; };
 		DF13EC0E7408C79C44B0FB61 /* Pods-RecipeMix.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RecipeMix.release.xcconfig"; path = "Target Support Files/Pods-RecipeMix/Pods-RecipeMix.release.xcconfig"; sourceTree = "<group>"; };
 		F5D03C7794B40584B5E3C9CB /* Pods-RecipeMix.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RecipeMix.debug.xcconfig"; path = "Target Support Files/Pods-RecipeMix/Pods-RecipeMix.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -67,6 +69,7 @@
 		4FC713DB2505874B00C36FE6 /* RecipeMix */ = {
 			isa = PBXGroup;
 			children = (
+				4FD5437725086B93006FC9A1 /* RM API */,
 				4FC713F12505889900C36FE6 /* RM View Controllers */,
 				4FC713F02505887800C36FE6 /* RM Assets */,
 				4FC713DC2505874B00C36FE6 /* AppDelegate.swift */,
@@ -94,6 +97,30 @@
 				4FC713F225058CD500C36FE6 /* HomeViewController.swift */,
 			);
 			path = "RM View Controllers";
+			sourceTree = "<group>";
+		};
+		4FD5437725086B93006FC9A1 /* RM API */ = {
+			isa = PBXGroup;
+			children = (
+				4FD5437925086BC5006FC9A1 /* RM Responses */,
+				4FD5437825086B9F006FC9A1 /* RM Models */,
+			);
+			path = "RM API";
+			sourceTree = "<group>";
+		};
+		4FD5437825086B9F006FC9A1 /* RM Models */ = {
+			isa = PBXGroup;
+			children = (
+				4FD5437A25086C77006FC9A1 /* Recipe.swift */,
+			);
+			path = "RM Models";
+			sourceTree = "<group>";
+		};
+		4FD5437925086BC5006FC9A1 /* RM Responses */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "RM Responses";
 			sourceTree = "<group>";
 		};
 		549A08F04D303889E2A280DC /* Pods */ = {
@@ -251,6 +278,7 @@
 				4FC713DD2505874B00C36FE6 /* AppDelegate.swift in Sources */,
 				4FC713DF2505874B00C36FE6 /* SceneDelegate.swift in Sources */,
 				4FC713F325058CD500C36FE6 /* HomeViewController.swift in Sources */,
+				4FD5437B25086C77006FC9A1 /* Recipe.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
