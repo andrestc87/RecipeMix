@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		4F82C1A2250DC62E005B1B6D /* RecipeMixClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F82C1A1250DC62E005B1B6D /* RecipeMixClient.swift */; };
 		4F82C1A5250DD2C7005B1B6D /* RecipeMixUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F82C1A4250DD2C7005B1B6D /* RecipeMixUtils.swift */; };
+		4F82C1A8250DDCA5005B1B6D /* RecipeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F82C1A7250DDCA5005B1B6D /* RecipeTableViewCell.swift */; };
 		4FC713DD2505874B00C36FE6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FC713DC2505874B00C36FE6 /* AppDelegate.swift */; };
 		4FC713DF2505874B00C36FE6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FC713DE2505874B00C36FE6 /* SceneDelegate.swift */; };
 		4FC713E12505874B00C36FE6 /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FC713E02505874B00C36FE6 /* AuthViewController.swift */; };
@@ -28,6 +29,7 @@
 		3397ED5DD991500428C599C8 /* Pods_RecipeMix.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RecipeMix.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F82C1A1250DC62E005B1B6D /* RecipeMixClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeMixClient.swift; sourceTree = "<group>"; };
 		4F82C1A4250DD2C7005B1B6D /* RecipeMixUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeMixUtils.swift; sourceTree = "<group>"; };
+		4F82C1A7250DDCA5005B1B6D /* RecipeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeTableViewCell.swift; sourceTree = "<group>"; };
 		4FC713D92505874B00C36FE6 /* RecipeMix.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RecipeMix.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4FC713DC2505874B00C36FE6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4FC713DE2505874B00C36FE6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -74,6 +76,14 @@
 			path = "RM Util";
 			sourceTree = "<group>";
 		};
+		4F82C1A6250DDC85005B1B6D /* RM Views */ = {
+			isa = PBXGroup;
+			children = (
+				4F82C1A7250DDCA5005B1B6D /* RecipeTableViewCell.swift */,
+			);
+			path = "RM Views";
+			sourceTree = "<group>";
+		};
 		4FC713D02505874B00C36FE6 = {
 			isa = PBXGroup;
 			children = (
@@ -95,6 +105,7 @@
 		4FC713DB2505874B00C36FE6 /* RecipeMix */ = {
 			isa = PBXGroup;
 			children = (
+				4F82C1A6250DDC85005B1B6D /* RM Views */,
 				4F82C1A3250DD2B4005B1B6D /* RM Util */,
 				4FD5437725086B93006FC9A1 /* RM API */,
 				4FC713F12505889900C36FE6 /* RM View Controllers */,
@@ -308,6 +319,7 @@
 				4FC713E12505874B00C36FE6 /* AuthViewController.swift in Sources */,
 				4FC713DD2505874B00C36FE6 /* AppDelegate.swift in Sources */,
 				4F82C1A5250DD2C7005B1B6D /* RecipeMixUtils.swift in Sources */,
+				4F82C1A8250DDCA5005B1B6D /* RecipeTableViewCell.swift in Sources */,
 				4FD54385250C8F37006FC9A1 /* DashboardTabBarController.swift in Sources */,
 				4F82C1A2250DC62E005B1B6D /* RecipeMixClient.swift in Sources */,
 				4FC713DF2505874B00C36FE6 /* SceneDelegate.swift in Sources */,

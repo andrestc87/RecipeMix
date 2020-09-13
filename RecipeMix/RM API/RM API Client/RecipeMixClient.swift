@@ -26,7 +26,8 @@ class RecipeMixClient {
     let recipeMixSearchRecipeEndpoint = "/random"
     
     func searchRecipeMixRecipes(tags: String, page: Int, completion: @escaping ([Recipe]?, Error?) -> Void) {
-        let searchRecipesUrl = getSearchRecipesUrl(tags: tags, page: page)
+        let searchTags = tags.lowercased()
+        let searchRecipesUrl = getSearchRecipesUrl(tags: searchTags, page: page)
         
         RecipeMixClient.taskForGETRequest(url: searchRecipesUrl!, response: RecipeResponse.self) { (response, error) in
                 if let response = response {
