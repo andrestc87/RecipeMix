@@ -8,6 +8,14 @@
 
 import Foundation
 
+struct RecipeResponse: Codable {
+    let recipes: [Recipe]?
+    
+    enum CodingKeys: String, CodingKey {
+        case recipes = "recipes"
+    }
+}
+
 struct Recipe: Codable {
     let vegetarian: Bool?
     let vegan: Bool?

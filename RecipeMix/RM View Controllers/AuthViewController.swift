@@ -40,7 +40,8 @@ class AuthViewController: UIViewController {
                 viewStack.isHidden = true
             }
             
-            let homeVC = self.storyboard?.instantiateViewController(withIdentifier: "HomeViewController") as! HomeViewController
+            //let homeVC = self.storyboard?.instantiateViewController(withIdentifier: "HomeViewController") as! HomeViewController
+            let homeVC = self.storyboard?.instantiateViewController(withIdentifier: "DashboardTabBarIdentifier") as! DashboardTabBarController
             homeVC.email = email
             homeVC.provider = ProviderType.init(rawValue: provider)!
             
@@ -122,7 +123,8 @@ class AuthViewController: UIViewController {
     private func navigateToHome(result: AuthDataResult?, error: Error?, provider: ProviderType) {
         
         if let result = result, error == nil {
-            let homeVC = self.storyboard?.instantiateViewController(withIdentifier: "HomeViewController") as! HomeViewController
+            //let homeVC = self.storyboard?.instantiateViewController(withIdentifier: "HomeViewController") as! HomeViewController
+            let homeVC = self.storyboard?.instantiateViewController(withIdentifier: "DashboardTabBarIdentifier") as! DashboardTabBarController
             homeVC.email = result.user.email
             homeVC.provider = provider
             
