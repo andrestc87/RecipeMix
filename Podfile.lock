@@ -97,18 +97,26 @@ PODS:
   - GTMSessionFetcher/Core (1.4.0)
   - GTMSessionFetcher/Full (1.4.0):
     - GTMSessionFetcher/Core (= 1.4.0)
+  - Kingfisher (5.15.0):
+    - Kingfisher/Core (= 5.15.0)
+  - Kingfisher/Core (5.15.0)
   - nanopb (1.30906.0):
     - nanopb/decode (= 1.30906.0)
     - nanopb/encode (= 1.30906.0)
   - nanopb/decode (1.30906.0)
   - nanopb/encode (1.30906.0)
   - PromisesObjC (1.2.10)
+  - SkeletonView (1.9)
+  - SnapKit (5.0.1)
 
 DEPENDENCIES:
   - FacebookLogin
   - Firebase/Analytics
   - Firebase/Auth
   - GoogleSignIn
+  - Kingfisher (~> 5.0)
+  - SkeletonView
+  - SnapKit (~> 5.0.0)
 
 SPEC REPOS:
   trunk:
@@ -129,8 +137,11 @@ SPEC REPOS:
     - GoogleUtilities
     - GTMAppAuth
     - GTMSessionFetcher
+    - Kingfisher
     - nanopb
     - PromisesObjC
+    - SkeletonView
+    - SnapKit
 
 SPEC CHECKSUMS:
   AppAuth: 31bcec809a638d7bd2f86ea8a52bd45f6e81e7c7
@@ -150,9 +161,12 @@ SPEC CHECKSUMS:
   GoogleUtilities: 7f2f5a07f888cdb145101d6042bc4422f57e70b3
   GTMAppAuth: 4deac854479704f348309e7b66189e604cf5e01e
   GTMSessionFetcher: 6f5c8abbab8a9bce4bb3f057e317728ec6182b10
+  Kingfisher: 1acb67597a520c2d0310677e66d6e0af455ef757
   nanopb: 59317e09cf1f1a0af72f12af412d54edf52603fc
   PromisesObjC: b14b1c6b68e306650688599de8a45e49fae81151
+  SkeletonView: f72ac4df69730e48324efae062ba580c2fce974d
+  SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
 
-PODFILE CHECKSUM: 0b341ce005b71b4a2e7ac821a6cebfca7e6dedf6
+PODFILE CHECKSUM: d65e27686033120169d8053a9ecf388382e6d467
 
 COCOAPODS: 1.9.3

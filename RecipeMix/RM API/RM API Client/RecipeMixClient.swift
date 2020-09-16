@@ -19,15 +19,15 @@ class RecipeMixClient {
     
     static let recipeMixSharedInstance = RecipeMixClient()
     
-    let recipeMixApiKey = "356f2955fc56448e932bb58f9c495f1d"
+    let recipeMixApiKey = "0aac219d134f4bf2b608ef2aa9dbf070"
     let recipeMixFormat = "json"
     let recipeMixBaseUrl = "https://api.spoonacular.com/recipes"
-    let recipeMixRecipesPerCall = 5
+    let recipeMixRecipesPerCall = 10
     let recipeMixSearchRecipeEndpoint = "/random"
     
-    func searchRecipeMixRecipes(tags: String, page: Int, completion: @escaping ([Recipe]?, Error?) -> Void) {
+    func searchRecipeMixRecipes(tags: String, completion: @escaping ([Recipe]?, Error?) -> Void) {
         let searchTags = tags.lowercased()
-        let searchRecipesUrl = getSearchRecipesUrl(tags: searchTags, page: page)
+        let searchRecipesUrl = getSearchRecipesUrl(tags: searchTags)
         
         RecipeMixClient.taskForGETRequest(url: searchRecipesUrl!, response: RecipeResponse.self) { (response, error) in
                 if let response = response {
@@ -39,7 +39,7 @@ class RecipeMixClient {
         }
     }
     
-    func getSearchRecipesUrl(tags: String, page: Int) -> URL? {
+    func getSearchRecipesUrl(tags: String) -> URL? {
         
         let searchRecipesUrl = recipeMixBaseUrl + recipeMixSearchRecipeEndpoint
         
@@ -94,3 +94,4 @@ class RecipeMixClient {
     }
     
 }
+

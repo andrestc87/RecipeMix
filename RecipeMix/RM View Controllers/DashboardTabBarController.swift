@@ -18,7 +18,8 @@ class DashboardTabBarController: UITabBarController {
         
         navigationItem.setHidesBackButton(true, animated: false)
         navigationController?.navigationBar.isHidden = true
-
+        tabBar.barTintColor = UIColor(red: 38/255, green: 196/255, blue: 133/255, alpha: 1)
+        
         // Save the User Session
         saveUserLoginInfo()
     }

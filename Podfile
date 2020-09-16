@@ -11,5 +11,7 @@ target 'RecipeMix' do
   pod 'Firebase/Auth'
   pod 'GoogleSignIn'
   pod 'FacebookLogin'
+  pod 'Kingfisher', '~> 5.0'
+  pod 'SkeletonView'
 
 end

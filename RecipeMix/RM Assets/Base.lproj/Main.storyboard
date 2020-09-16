@@ -103,7 +103,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="eNu-Z8-fTQ"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Recipes" id="dFx-xD-Wyq">
+                    <navigationItem key="navigationItem" title="Recipes" largeTitleDisplayMode="always" id="dFx-xD-Wyq">
                         <barButtonItem key="rightBarButtonItem" title="Log Out" id="kzw-5H-e4b"/>
                     </navigationItem>
                 </viewController>
@@ -111,50 +111,69 @@
             </objects>
             <point key="canvasLocation" x="4105.7971014492759" y="160.71428571428569"/>
         </scene>
-        <!--Home-->
+        <!--Recipes-->
         <scene sceneID="h7g-2B-N8m">
             <objects>
-                <viewController storyboardIdentifier="RecipeDashboardIdentifier" id="ecU-Sk-4w4" customClass="RecipeDashboardViewController" customModule="RecipeMix" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RecipeDashboardIdentifier" title="Recipes" id="ecU-Sk-4w4" customClass="RecipeDashboardViewController" customModule="RecipeMix" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="c7c-eg-VvY">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="646-dm-D22" userLabel="searchBar">
-                                <rect key="frame" x="0.0" y="88" width="414" height="60"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="60" id="Lyk-1A-7Lw"/>
-                                </constraints>
-                                <textInputTraits key="textInputTraits"/>
-                            </searchBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="FYB-mT-bCi" userLabel="tableView">
-                                <rect key="frame" x="0.0" y="148" width="414" height="665"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="RecipeTableViewCellIdentifier" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="RecipeTableViewCellIdentifier" rowHeight="74" id="eeK-MV-aaa" userLabel="recipeTableViewCell" customClass="RecipeTableViewCell" customModule="RecipeMix" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="74"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="RecipeTableViewCellIdentifier" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="RecipeTableViewCellIdentifier" rowHeight="237" id="eeK-MV-aaa" userLabel="recipeTableViewCell" customClass="RecipeTableViewCell" customModule="RecipeMix" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="237"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="eeK-MV-aaa" id="PpT-aB-FS7">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="74"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="237"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YOs-S0-8SF" userLabel="recipeCellLabel">
-                                                    <rect key="frame" x="20" y="37" width="374" height="0.0"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="yQF-3f-4Nb" userLabel="RecipeImageView" customClass="GradientImageView" customModule="RecipeMix" customModuleProvider="target">
+                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="237"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="260" id="O3u-mB-gyQ"/>
+                                                    </constraints>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                                                    </userDefinedRuntimeAttributes>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" highlighted="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y6D-xf-DdD" userLabel="TitleLabel">
+                                                    <rect key="frame" x="10" y="169.5" width="394" height="47.5"/>
+                                                    <fontDescription key="fontDescription" name="NotoNastaliqUrdu-Bold" family="Noto Nastaliq Urdu" pointSize="19"/>
+                                                    <color key="textColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                     <nil key="highlightedColor"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                                                    </userDefinedRuntimeAttributes>
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="trailing" secondItem="YOs-S0-8SF" secondAttribute="trailing" constant="20" id="4Zy-HX-1jz"/>
-                                                <constraint firstItem="YOs-S0-8SF" firstAttribute="centerY" secondItem="PpT-aB-FS7" secondAttribute="centerY" id="Ca7-Uk-G5H"/>
-                                                <constraint firstItem="YOs-S0-8SF" firstAttribute="leading" secondItem="PpT-aB-FS7" secondAttribute="leading" constant="20" id="GSN-2f-lnG"/>
+                                                <constraint firstItem="yQF-3f-4Nb" firstAttribute="bottom" secondItem="PpT-aB-FS7" secondAttribute="bottom" id="6B9-vI-6qb"/>
+                                                <constraint firstItem="yQF-3f-4Nb" firstAttribute="trailing" secondItem="PpT-aB-FS7" secondAttribute="trailing" id="Uok-aZ-n6j"/>
+                                                <constraint firstItem="yQF-3f-4Nb" firstAttribute="top" secondItem="PpT-aB-FS7" secondAttribute="top" id="ivN-Lt-KwE"/>
+                                                <constraint firstItem="Y6D-xf-DdD" firstAttribute="trailing" secondItem="PpT-aB-FS7" secondAttribute="trailing" constant="-10" id="qnF-T4-Tbq"/>
+                                                <constraint firstItem="Y6D-xf-DdD" firstAttribute="bottom" secondItem="PpT-aB-FS7" secondAttribute="bottom" constant="-20" id="rSd-fx-fBK"/>
+                                                <constraint firstItem="Y6D-xf-DdD" firstAttribute="leading" secondItem="PpT-aB-FS7" secondAttribute="leading" constant="10" id="up9-MN-jps"/>
+                                                <constraint firstItem="yQF-3f-4Nb" firstAttribute="leading" secondItem="PpT-aB-FS7" secondAttribute="leading" id="xr8-FV-dcb"/>
                                             </constraints>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                                            </userDefinedRuntimeAttributes>
                                         </tableViewCellContentView>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
                                         <connections>
-                                            <outlet property="recipeCellLabel" destination="YOs-S0-8SF" id="L2I-d5-UWf"/>
+                                            <outlet property="recipeImageView" destination="yQF-3f-4Nb" id="1s0-p6-x0m"/>
+                                            <outlet property="recipeTitleLabel" destination="Y6D-xf-DdD" id="3ub-yE-Nd4"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="NO"/>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <outlet property="dataSource" destination="ecU-Sk-4w4" id="4WZ-qb-67V"/>
                                     <outlet property="delegate" destination="ecU-Sk-4w4" id="RNC-3W-b0y"/>
@@ -163,17 +182,20 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="646-dm-D22" firstAttribute="top" secondItem="CvO-UG-VF6" secondAttribute="top" id="6a0-gA-dLq"/>
+                            <constraint firstItem="FYB-mT-bCi" firstAttribute="top" secondItem="CvO-UG-VF6" secondAttribute="top" id="3nh-gy-YB7"/>
+                            <constraint firstItem="FYB-mT-bCi" firstAttribute="bottom" secondItem="CvO-UG-VF6" secondAttribute="bottom" id="BxU-7a-d4X"/>
                             <constraint firstItem="FYB-mT-bCi" firstAttribute="leading" secondItem="CvO-UG-VF6" secondAttribute="leading" id="GfC-pj-PKL"/>
                             <constraint firstItem="CvO-UG-VF6" firstAttribute="bottom" secondItem="FYB-mT-bCi" secondAttribute="bottom" id="PmO-NF-BCO"/>
-                            <constraint firstItem="FYB-mT-bCi" firstAttribute="top" secondItem="646-dm-D22" secondAttribute="bottom" id="chR-FJ-BVL"/>
                             <constraint firstItem="CvO-UG-VF6" firstAttribute="trailing" secondItem="FYB-mT-bCi" secondAttribute="trailing" id="fvk-AP-RXk"/>
-                            <constraint firstItem="646-dm-D22" firstAttribute="leading" secondItem="CvO-UG-VF6" secondAttribute="leading" id="jhj-gL-mdg"/>
-                            <constraint firstItem="646-dm-D22" firstAttribute="trailing" secondItem="CvO-UG-VF6" secondAttribute="trailing" id="rgf-6X-DLj"/>
+                            <constraint firstItem="FYB-mT-bCi" firstAttribute="trailing" secondItem="CvO-UG-VF6" secondAttribute="trailing" id="g9F-ax-CtR"/>
+                            <constraint firstItem="FYB-mT-bCi" firstAttribute="leading" secondItem="CvO-UG-VF6" secondAttribute="leading" id="gRH-Mm-aBL"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="CvO-UG-VF6"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                        </userDefinedRuntimeAttributes>
                     </view>
-                    <navigationItem key="navigationItem" title="Home" id="dLd-au-VJg">
+                    <navigationItem key="navigationItem" title="Recipes" largeTitleDisplayMode="always" id="dLd-au-VJg">
                         <barButtonItem key="rightBarButtonItem" title="Log Out" id="xu7-Sx-o7j">
                             <connections>
                                 <action selector="logOutButtonAction:" destination="ecU-Sk-4w4" id="5AL-pM-Hb2"/>
@@ -181,7 +203,6 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="searhBar" destination="646-dm-D22" id="WxM-ox-h8n"/>
                         <outlet property="tableView" destination="FYB-mT-bCi" id="69C-ye-98V"/>
                     </connections>
                 </viewController>
@@ -280,11 +301,11 @@
             </objects>
             <point key="canvasLocation" x="-264" y="121"/>
         </scene>
-        <!--Item 1-->
+        <!--Navigation Controller-->
         <scene sceneID="dSn-q2-WXX">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Gns-xF-P3o" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item 1" id="3zz-6o-DC3"/>
+                    <tabBarItem key="tabBarItem" title="" image="Recipes" id="3zz-6o-DC3"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="gmy-Jq-q4c">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -299,11 +320,11 @@
             </objects>
             <point key="canvasLocation" x="3195.6521739130435" y="-527.00892857142856"/>
         </scene>
-        <!--Item 2-->
+        <!--Navigation Controller-->
         <scene sceneID="DoS-9M-3Y2">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="yV5-te-8zT" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item 2" id="MeN-P9-8be"/>
+                    <tabBarItem key="tabBarItem" title="" image="Cheff" id="MeN-P9-8be"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="iIg-2y-yxT">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -328,7 +349,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="bdf-mz-Vcv"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Ingredients" id="IbQ-kr-LE5">
+                    <navigationItem key="navigationItem" title="Ingredients" largeTitleDisplayMode="always" id="IbQ-kr-LE5">
                         <barButtonItem key="rightBarButtonItem" title="Log Out" id="s2x-Ze-ND4"/>
                     </navigationItem>
                 </viewController>
@@ -336,11 +357,11 @@
             </objects>
             <point key="canvasLocation" x="4102.898550724638" y="843.75"/>
         </scene>
-        <!--Item-->
+        <!--Navigation Controller-->
         <scene sceneID="T6x-hJ-Wv2">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Dlj-Gm-t6u" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="fSm-xI-Xnf"/>
+                    <tabBarItem key="tabBarItem" title="" image="Ingredients" id="fSm-xI-Xnf"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="2ng-zR-Y8k">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -356,4 +377,9 @@
             <point key="canvasLocation" x="3192.753623188406" y="843.75"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Cheff" width="25" height="25"/>
+        <image name="Ingredients" width="25" height="25"/>
+        <image name="Recipes" width="25" height="25"/>
+    </resources>
 </document>
