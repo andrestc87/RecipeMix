@@ -28,7 +28,9 @@ class RecipeDashboardViewController: BaseViewController, SkeletonTableViewDelega
         //self.searhBar.delegate = self
         
         self.tableView.tableFooterView = UIView()
-        
+        // Enable self sizing rows.
+        self.tableView.estimatedRowHeight = 80.0
+        self.tableView.rowHeight = UITableView.automaticDimension
         // Load Initial Recipes
         // TODO: Review how to handle the pagination
         loadRecipes(tags: "", page: 50)
@@ -84,6 +86,8 @@ class RecipeDashboardViewController: BaseViewController, SkeletonTableViewDelega
                 }
                 
                 self.tableView.reloadData()
+                self.tableView.layoutIfNeeded()
+                self.tableView.setContentOffset(CGPoint(x: 0, y: -self.tableView.contentInset.top), animated: true)
             }
         }
     }
@@ -120,14 +124,13 @@ class RecipeDashboardViewController: BaseViewController, SkeletonTableViewDelega
         } else {
             
             let cell = tableView.dequeueReusableCell(withIdentifier: RecipeTableViewCell.kRecipeCellId, for: indexPath) as! RecipeTableViewCell
+            
             cell.selectionStyle = .none
-            
             cell.recipeImageView.showAnimatedGradientSkeleton()
-            
             cell.recipeTitleLabel.textAlignment = .left
             
             let recipe = self.recipes[indexPath.row]
-            cell.recipeTitleLabel.text = recipe.title
+            cell.recipeTitleLabel.text = recipe.title?.trimmingCharacters(in: .whitespacesAndNewlines)
             
             // Using Kingsfire to load images
             if let imageUrl = recipe.image {
@@ -144,7 +147,10 @@ class RecipeDashboardViewController: BaseViewController, SkeletonTableViewDelega
                         }
                     }
                 }
+            } else {
+                cell.recipeImageView.hideSkeleton()
             }
+            
             return cell
         }
     }

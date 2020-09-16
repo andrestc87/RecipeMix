@@ -139,13 +139,16 @@
                                                         <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
                                                     </userDefinedRuntimeAttributes>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" highlighted="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y6D-xf-DdD" userLabel="TitleLabel">
-                                                    <rect key="frame" x="10" y="169.5" width="394" height="47.5"/>
-                                                    <fontDescription key="fontDescription" name="NotoNastaliqUrdu-Bold" family="Noto Nastaliq Urdu" pointSize="19"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y6D-xf-DdD" userLabel="TitleLabel">
+                                                    <rect key="frame" x="20" y="190.5" width="384" height="26.5"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
                                                     <color key="textColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                     <nil key="highlightedColor"/>
                                                     <userDefinedRuntimeAttributes>
-                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="NO"/>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="lastLineFillPercent">
+                                                            <integer key="value" value="0"/>
+                                                        </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                 </label>
                                             </subviews>
@@ -155,7 +158,7 @@
                                                 <constraint firstItem="yQF-3f-4Nb" firstAttribute="top" secondItem="PpT-aB-FS7" secondAttribute="top" id="ivN-Lt-KwE"/>
                                                 <constraint firstItem="Y6D-xf-DdD" firstAttribute="trailing" secondItem="PpT-aB-FS7" secondAttribute="trailing" constant="-10" id="qnF-T4-Tbq"/>
                                                 <constraint firstItem="Y6D-xf-DdD" firstAttribute="bottom" secondItem="PpT-aB-FS7" secondAttribute="bottom" constant="-20" id="rSd-fx-fBK"/>
-                                                <constraint firstItem="Y6D-xf-DdD" firstAttribute="leading" secondItem="PpT-aB-FS7" secondAttribute="leading" constant="10" id="up9-MN-jps"/>
+                                                <constraint firstItem="Y6D-xf-DdD" firstAttribute="leading" secondItem="PpT-aB-FS7" secondAttribute="leading" constant="20" id="up9-MN-jps"/>
                                                 <constraint firstItem="yQF-3f-4Nb" firstAttribute="leading" secondItem="PpT-aB-FS7" secondAttribute="leading" id="xr8-FV-dcb"/>
                                             </constraints>
                                             <userDefinedRuntimeAttributes>
