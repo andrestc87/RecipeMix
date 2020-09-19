@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4F49C6EF2515AC6700D43E61 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F49C6EE2515AC6700D43E61 /* DataController.swift */; };
+		4F49C6F12515AFC000D43E61 /* RecipeDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F49C6F02515AFC000D43E61 /* RecipeDetailViewController.swift */; };
 		4F82C1A2250DC62E005B1B6D /* RecipeMixClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F82C1A1250DC62E005B1B6D /* RecipeMixClient.swift */; };
 		4F82C1A5250DD2C7005B1B6D /* RecipeMixUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F82C1A4250DD2C7005B1B6D /* RecipeMixUtils.swift */; };
 		4F82C1A8250DDCA5005B1B6D /* RecipeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F82C1A7250DDCA5005B1B6D /* RecipeTableViewCell.swift */; };
@@ -29,6 +31,8 @@
 
 /* Begin PBXFileReference section */
 		3397ED5DD991500428C599C8 /* Pods_RecipeMix.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RecipeMix.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4F49C6EE2515AC6700D43E61 /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
+		4F49C6F02515AFC000D43E61 /* RecipeDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeDetailViewController.swift; sourceTree = "<group>"; };
 		4F82C1A1250DC62E005B1B6D /* RecipeMixClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeMixClient.swift; sourceTree = "<group>"; };
 		4F82C1A4250DD2C7005B1B6D /* RecipeMixUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeMixUtils.swift; sourceTree = "<group>"; };
 		4F82C1A7250DDCA5005B1B6D /* RecipeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeTableViewCell.swift; sourceTree = "<group>"; };
@@ -141,6 +145,7 @@
 				4FD5437E250C84FD006FC9A1 /* RecipeDashboardViewController.swift */,
 				4FD54382250C88E4006FC9A1 /* BaseViewController.swift */,
 				4FD54384250C8F37006FC9A1 /* DashboardTabBarController.swift */,
+				4F49C6F02515AFC000D43E61 /* RecipeDetailViewController.swift */,
 			);
 			path = "RM View Controllers";
 			sourceTree = "<group>";
@@ -151,6 +156,7 @@
 				4F82C1A0250DC610005B1B6D /* RM API Client */,
 				4FD5437925086BC5006FC9A1 /* RM Responses */,
 				4FD5437825086B9F006FC9A1 /* RM Models */,
+				4F49C6EE2515AC6700D43E61 /* DataController.swift */,
 			);
 			path = "RM API";
 			sourceTree = "<group>";
@@ -329,11 +335,13 @@
 				4F82C1A8250DDCA5005B1B6D /* RecipeTableViewCell.swift in Sources */,
 				4FD54385250C8F37006FC9A1 /* DashboardTabBarController.swift in Sources */,
 				4F82C1A2250DC62E005B1B6D /* RecipeMixClient.swift in Sources */,
+				4F49C6EF2515AC6700D43E61 /* DataController.swift in Sources */,
 				4FC713DF2505874B00C36FE6 /* SceneDelegate.swift in Sources */,
 				4F930401251307AC00FDA584 /* RecipeMix.xcdatamodeld in Sources */,
 				4FD5437F250C84FD006FC9A1 /* RecipeDashboardViewController.swift in Sources */,
 				4FC713F325058CD500C36FE6 /* HomeViewController.swift in Sources */,
 				4FD54383250C88E4006FC9A1 /* BaseViewController.swift in Sources */,
+				4F49C6F12515AFC000D43E61 /* RecipeDetailViewController.swift in Sources */,
 				4FD5437B25086C77006FC9A1 /* Recipe.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

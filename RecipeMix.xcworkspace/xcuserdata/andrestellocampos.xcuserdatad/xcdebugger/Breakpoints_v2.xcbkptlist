@@ -7,16 +7,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "62EC97CF-1A7A-46B9-917D-BF27F71E64A8"
-            shouldBeEnabled = "Yes"
+            uuid = "E2222571-EB72-479C-928E-E1751010A3FA"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "RecipeMix/RM View Controllers/RecipeDashboardViewController.swift"
+            filePath = "RecipeMix/RM View Controllers/RecipeDetailViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "172"
-            endingLineNumber = "172"
-            landmarkName = "searchBarSearchButtonClicked(_:)"
+            startingLineNumber = "218"
+            endingLineNumber = "218"
+            landmarkName = "isRecipeAlreadyRegistered()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

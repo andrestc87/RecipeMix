@@ -18,7 +18,7 @@
         <relationship name="recipe" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="RM_Recipe" inverseName="dishTypes" inverseEntity="RM_Recipe"/>
     </entity>
     <entity name="RM_Equipment" representedClassName="RM_Equipment" syncable="YES" codeGenerationType="class">
-        <attribute name="id" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="image" optional="YES" attributeType="String"/>
         <attribute name="localizedName" optional="YES" attributeType="String"/>
         <attribute name="name" optional="YES" attributeType="String"/>
@@ -28,76 +28,53 @@
         <attribute name="aisle" optional="YES" attributeType="String"/>
         <attribute name="amount" optional="YES" attributeType="Decimal" defaultValueString="0.0"/>
         <attribute name="consistency" optional="YES" attributeType="String"/>
-        <attribute name="id" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="image" optional="YES" attributeType="String"/>
         <attribute name="name" optional="YES" attributeType="String"/>
         <attribute name="original" optional="YES" attributeType="String"/>
         <attribute name="originalName" optional="YES" attributeType="String"/>
         <attribute name="originalString" optional="YES" attributeType="String"/>
         <attribute name="unit" optional="YES" attributeType="String"/>
-        <relationship name="messures" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="RM_Messures" inverseName="extendedIngredients" inverseEntity="RM_Messures"/>
-        <relationship name="meta" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="RM_Meta" inverseName="extendedIngredients" inverseEntity="RM_Meta"/>
-        <relationship name="metaInformation" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="RM_MetaInformation" inverseName="extendedIngredients" inverseEntity="RM_MetaInformation"/>
         <relationship name="recipe" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="RM_Recipe" inverseName="extendedIngredients" inverseEntity="RM_Recipe"/>
     </entity>
     <entity name="RM_Ingredients" representedClassName="RM_Ingredients" syncable="YES" codeGenerationType="class">
-        <attribute name="id" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="image" optional="YES" attributeType="String"/>
         <attribute name="localizedName" optional="YES" attributeType="String"/>
         <attribute name="name" optional="YES" attributeType="String"/>
         <relationship name="steps" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="RM_Steps" inverseName="ingredients" inverseEntity="RM_Steps"/>
     </entity>
     <entity name="RM_Length" representedClassName="RM_Length" syncable="YES" codeGenerationType="class">
-        <attribute name="number" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="number" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="unit" optional="YES" attributeType="String"/>
         <relationship name="steps" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="RM_Steps" inverseName="length" inverseEntity="RM_Steps"/>
-    </entity>
-    <entity name="RM_MessureInformation" representedClassName="RM_MessureInformation" syncable="YES" codeGenerationType="class">
-        <attribute name="amount" optional="YES" attributeType="Decimal" defaultValueString="0.0"/>
-        <attribute name="unitLong" optional="YES" attributeType="String"/>
-        <attribute name="unitShort" optional="YES" attributeType="String"/>
-        <relationship name="metric" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="RM_Messures" inverseName="metric" inverseEntity="RM_Messures"/>
-        <relationship name="us" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="RM_Messures" inverseName="us" inverseEntity="RM_Messures"/>
-    </entity>
-    <entity name="RM_Messures" representedClassName="RM_Messures" syncable="YES" codeGenerationType="class">
-        <relationship name="extendedIngredients" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="RM_ExtendedIngredients" inverseName="messures" inverseEntity="RM_ExtendedIngredients"/>
-        <relationship name="metric" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="RM_MessureInformation" inverseName="metric" inverseEntity="RM_MessureInformation"/>
-        <relationship name="us" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="RM_MessureInformation" inverseName="us" inverseEntity="RM_MessureInformation"/>
-    </entity>
-    <entity name="RM_Meta" representedClassName="RM_Meta" syncable="YES" codeGenerationType="class">
-        <attribute name="metaDescription" optional="YES" attributeType="String"/>
-        <relationship name="extendedIngredients" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="RM_ExtendedIngredients" inverseName="meta" inverseEntity="RM_ExtendedIngredients"/>
-    </entity>
-    <entity name="RM_MetaInformation" representedClassName="RM_MetaInformation" syncable="YES" codeGenerationType="class">
-        <attribute name="metaInfoDescription" optional="YES" attributeType="String"/>
-        <relationship name="extendedIngredients" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="RM_ExtendedIngredients" inverseName="metaInformation" inverseEntity="RM_ExtendedIngredients"/>
     </entity>
     <entity name="RM_Occasions" representedClassName="RM_Occasions" syncable="YES" codeGenerationType="class">
         <attribute name="occasionDescription" optional="YES" attributeType="String"/>
         <relationship name="recipe" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="RM_Recipe" inverseName="occasions" inverseEntity="RM_Recipe"/>
     </entity>
     <entity name="RM_Recipe" representedClassName="RM_Recipe" syncable="YES" codeGenerationType="class">
-        <attribute name="aggregateLikes" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="aggregateLikes" optional="YES" attributeType="Integer 64" usesScalarValueType="YES"/>
         <attribute name="cheap" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="creditsText" optional="YES" attributeType="String"/>
         <attribute name="dairyFree" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="gaps" optional="YES" attributeType="String"/>
         <attribute name="glutenFree" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
-        <attribute name="healthScore" optional="YES" attributeType="Decimal" defaultValueString="0.0"/>
-        <attribute name="id" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="healthScore" optional="YES" attributeType="Decimal"/>
+        <attribute name="id" optional="YES" attributeType="Integer 64" usesScalarValueType="YES"/>
         <attribute name="image" optional="YES" attributeType="String"/>
         <attribute name="imageType" optional="YES" attributeType="String"/>
         <attribute name="instructions" optional="YES" attributeType="String"/>
         <attribute name="license" optional="YES" attributeType="String"/>
         <attribute name="lowFodmap" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
-        <attribute name="originalId" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="pricePerServing" optional="YES" attributeType="Decimal" defaultValueString="0.0"/>
-        <attribute name="readyInMinutes" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="originalId" optional="YES" attributeType="Integer 64" usesScalarValueType="YES"/>
+        <attribute name="pricePerServing" optional="YES" attributeType="Decimal"/>
+        <attribute name="readyInMinutes" optional="YES" attributeType="Integer 64" usesScalarValueType="YES"/>
         <attribute name="registeredDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
-        <attribute name="servings" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="servings" optional="YES" attributeType="Integer 64" usesScalarValueType="YES"/>
         <attribute name="sourceName" optional="YES" attributeType="String"/>
         <attribute name="sourceUrl" optional="YES" attributeType="String"/>
-        <attribute name="spoonacularScore" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="spoonacularScore" optional="YES" attributeType="Double" usesScalarValueType="YES"/>
         <attribute name="spoonacularSourceUrl" optional="YES" attributeType="String"/>
         <attribute name="summary" optional="YES" attributeType="String"/>
         <attribute name="sustainable" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
@@ -106,7 +83,7 @@
         <attribute name="vegetarian" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="veryHealthy" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="veryPopular" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
-        <attribute name="weightWatcherSmartPoints" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="weightWatcherSmartPoints" optional="YES" attributeType="Integer 64" usesScalarValueType="YES"/>
         <relationship name="analizedInstructions" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="RM_AnalizedInstructions" inverseName="recipe" inverseEntity="RM_AnalizedInstructions"/>
         <relationship name="cuisines" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="RM_Cuisines" inverseName="recipe" inverseEntity="RM_Cuisines"/>
         <relationship name="diets" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="RM_Diets" inverseName="recipe" inverseEntity="RM_Diets"/>
@@ -115,7 +92,7 @@
         <relationship name="occasions" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="RM_Occasions" inverseName="recipe" inverseEntity="RM_Occasions"/>
     </entity>
     <entity name="RM_Steps" representedClassName="RM_Steps" syncable="YES" codeGenerationType="class">
-        <attribute name="number" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="number" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="step" optional="YES" attributeType="String"/>
         <relationship name="analizedInstructions" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="RM_AnalizedInstructions" inverseName="steps" inverseEntity="RM_AnalizedInstructions"/>
         <relationship name="equipments" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="RM_Equipment" inverseName="steps" inverseEntity="RM_Equipment"/>
@@ -123,20 +100,16 @@
         <relationship name="length" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="RM_Length" inverseName="steps" inverseEntity="RM_Length"/>
     </entity>
     <elements>
-        <element name="RM_Recipe" positionX="-607.390625" positionY="86.88671875" width="128" height="583"/>
-        <element name="RM_Cuisines" positionX="-228.7265625" positionY="446.5859375" width="128" height="73"/>
-        <element name="RM_DishTypes" positionX="-226.16796875" positionY="347.88671875" width="128" height="73"/>
-        <element name="RM_Diets" positionX="-229.77734375" positionY="259.8828125" width="128" height="73"/>
-        <element name="RM_Occasions" positionX="-230.79296875" positionY="180.36328125" width="128" height="73"/>
         <element name="RM_AnalizedInstructions" positionX="-227.015625" positionY="542.49609375" width="128" height="88"/>
-        <element name="RM_Steps" positionX="-43.453125" positionY="522.625" width="128" height="133"/>
-        <element name="RM_Ingredients" positionX="144.6015625" positionY="474.45703125" width="128" height="118"/>
+        <element name="RM_Cuisines" positionX="-228.7265625" positionY="446.5859375" width="128" height="73"/>
+        <element name="RM_Diets" positionX="-229.77734375" positionY="259.8828125" width="128" height="73"/>
+        <element name="RM_DishTypes" positionX="-226.16796875" positionY="347.88671875" width="128" height="73"/>
         <element name="RM_Equipment" positionX="145.76953125" positionY="632.75" width="128" height="118"/>
+        <element name="RM_ExtendedIngredients" positionX="-218.71484375" positionY="732.7578125" width="128" height="208"/>
+        <element name="RM_Ingredients" positionX="144.6015625" positionY="474.45703125" width="128" height="118"/>
         <element name="RM_Length" positionX="145.703125" positionY="762.33203125" width="128" height="88"/>
-        <element name="RM_ExtendedIngredients" positionX="-218.71484375" positionY="732.7578125" width="128" height="253"/>
-        <element name="RM_Meta" positionX="-40.81640625" positionY="685.875" width="128" height="73"/>
-        <element name="RM_MetaInformation" positionX="-17.7578125" positionY="1064.72265625" width="128" height="73"/>
-        <element name="RM_MessureInformation" positionX="151.19921875" positionY="909.19140625" width="128" height="118"/>
-        <element name="RM_Messures" positionX="-39.86328125" positionY="864.390625" width="128" height="88"/>
+        <element name="RM_Occasions" positionX="-230.79296875" positionY="180.36328125" width="128" height="73"/>
+        <element name="RM_Recipe" positionX="-607.390625" positionY="86.88671875" width="128" height="583"/>
+        <element name="RM_Steps" positionX="-43.453125" positionY="522.625" width="128" height="133"/>
     </elements>
 </model>

@@ -202,14 +202,14 @@ struct Step: Codable {
     let number: Int?
     let step: String?
     let ingredients: [Ingredient]?
-    let equipment: [Equipment]?
+    let equipments: [Equipment]?
     let length: Length?
     
     enum CodingKeys: String, CodingKey {
         case number = "number"
         case step = "step"
         case ingredients = "ingredients"
-        case equipment = "equipment"
+        case equipments = "equipments"
         case length = "length"
     }
 }

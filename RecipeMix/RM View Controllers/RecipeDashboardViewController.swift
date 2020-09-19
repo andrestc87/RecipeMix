@@ -159,9 +159,16 @@ class RecipeDashboardViewController: BaseViewController, SkeletonTableViewDelega
         if self.noResults {
             print("Nothing to do here")
         } else {
-            print("NAVIGATE TO DETAIL")
+            let selectedRecipe = self.recipes[indexPath.row]
+            let detailVC = self.storyboard?.instantiateViewController(withIdentifier: "RecipeDetaolViewController") as! RecipeDetailViewController
+            detailVC.recipe = selectedRecipe
+            
+            self.navigationController?.pushViewController(detailVC, animated: true)
         }
     }
+    
+    
+    
     
 }
 

@@ -25,6 +25,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Google Auth
         GIDSignIn.sharedInstance()?.clientID = FirebaseApp.app()?.options.clientID
         
+        DataController.shared.load()
+        
         return true
     }
     

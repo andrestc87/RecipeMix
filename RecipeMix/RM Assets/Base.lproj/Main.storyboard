@@ -213,6 +213,42 @@
             </objects>
             <point key="canvasLocation" x="4105.7971014492759" y="-527.00892857142856"/>
         </scene>
+        <!--Recipe Detail View Controller-->
+        <scene sceneID="bgU-lD-Aqk">
+            <objects>
+                <viewController storyboardIdentifier="RecipeDetaolViewController" hidesBottomBarWhenPushed="YES" id="aIi-iB-fGY" customClass="RecipeDetailViewController" customModule="RecipeMix" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Ero-ET-eAw">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rMe-ab-DyA">
+                                <rect key="frame" x="190" y="437" width="34" height="26"/>
+                                <state key="normal" title="Save"/>
+                                <connections>
+                                    <action selector="saveRecipeAction:" destination="aIi-iB-fGY" eventType="touchUpInside" id="oMg-bT-ERA"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mL5-om-iNY">
+                                <rect key="frame" x="196" y="520" width="34" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Load"/>
+                                <connections>
+                                    <action selector="loadRecipesButtonAction:" destination="aIi-iB-fGY" eventType="touchUpInside" id="Mcm-7E-GfT"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="rMe-ab-DyA" firstAttribute="centerX" secondItem="Ero-ET-eAw" secondAttribute="centerX" id="0WP-xj-eyt"/>
+                            <constraint firstItem="rMe-ab-DyA" firstAttribute="centerY" secondItem="Ero-ET-eAw" secondAttribute="centerY" id="IyO-OZ-BIk"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="ghm-6E-ir7"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="a0o-O7-rZm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5098.5507246376819" y="-527.00892857142856"/>
+        </scene>
         <!--Dashboard Tab Bar Controller-->
         <scene sceneID="YQG-B9-7eM">
             <objects>
