@@ -12,7 +12,6 @@ import SkeletonView
 
 class RecipeDashboardViewController: BaseViewController, SkeletonTableViewDelegate, SkeletonTableViewDataSource {
     
-    //@IBOutlet weak var searhBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
     
     var recipes = [Recipe]()
@@ -20,55 +19,56 @@ class RecipeDashboardViewController: BaseViewController, SkeletonTableViewDelega
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        //setupAppareance()
+        
+        // Setup NavBar
         setupNavBar()
+        
+        // Setup TableView
+        setupTableView()
+        
+        // Load Initial Recipes
+        loadRecipes(tags: "")
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super .viewWillAppear(animated)
+        print("WILL APPEAR")
+        self.navigationController?.navigationBar.isHidden = false
+    }
+    
+    func setupNavBar() {
+        //TODO: UI Issue when scrolling and starting to search displays extra space, needs to be fixed
+        // NavBar
+        self.navigationController?.navigationBar.isHidden = false
+        configureNavigationBar(largeTitleColor: .white, backgoundColor: RecipeMixUtils.appMainBackgroundColor, tintColor: .systemBlue, title: "Recipes", preferredLargeTitle: true)
+        
+        // Search Controller
+        let searchController = UISearchController(searchResultsController: nil)
+        searchController.searchBar.delegate = self
+        //searchController.automaticallyShowsSearchResultsController = false
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.placeholder = "Type your search here..."
+        searchController.searchBar.searchTextField.backgroundColor = .white
+        searchController.extendedLayoutIncludesOpaqueBars = true
+        navigationItem.searchController = searchController
+        navigationItem.hidesSearchBarWhenScrolling = true
+    }
+    
+    func setupTableView() {
+        // Setting Delegates
         self.tableView.delegate = self
         self.tableView.dataSource = self
-        //self.searhBar.delegate = self
         
+        // No FooterView
         self.tableView.tableFooterView = UIView()
+        self.tableView.tableHeaderView = UIView()
+        
         // Enable self sizing rows.
         self.tableView.estimatedRowHeight = 80.0
         self.tableView.rowHeight = UITableView.automaticDimension
-        // Load Initial Recipes
-        // TODO: Review how to handle the pagination
-        loadRecipes(tags: "", page: 50)
-        
     }
     
-    // TODO: Arreglar SearchBar
-    // TODO: Arreglar SearchBar
-    // TODO: Arreglar SearchBar
-    // TODO: Arreglar SearchBar
-    // TODO: Arreglar SearchBar
-    // TODO: Arreglar SearchBar
-    // TODO: Arreglar SearchBar
-    // TODO: Arreglar SearchBar
-    // TODO: Arreglar SearchBar
-    func setupNavBar() {
-        navigationController?.navigationBar.prefersLargeTitles = true
-        
-        let searchController = UISearchController(searchResultsController: nil)
-        searchController.searchBar.delegate = self
-        //searchController.automaticallyShowsSearchResultsController = true
-        searchController.obscuresBackgroundDuringPresentation = false
-        searchController.searchBar.placeholder = "Type your search here..."
-        navigationItem.searchController = searchController
-        navigationItem.hidesSearchBarWhenScrolling = true
-        
-        
-    }
-    
-    func setupAppareance() {
-        navigationController?.navigationBar.barTintColor = UIColor(red: 38/255, green: 196/255, blue: 133/255, alpha: 1)
-        self.tableView.backgroundColor = UIColor(red: 38/255, green: 196/255, blue: 133/255, alpha: 1)
-        //self.searhBar.tintColor = .white
-        //self.searhBar.barTintColor = UIColor(red: 38/255, green: 196/255, blue: 133/255, alpha: 1)
-        //self.searhBar.searchTextField.backgroundColor = .white
-    }
-    
-    func loadRecipes(tags: String, page: Int) {
+    func loadRecipes(tags: String) {
         self.recipes = []
         self.noResults = false
         RecipeMixClient.recipeMixSharedInstance.searchRecipeMixRecipes(tags: tags) { (recipes, error) in
@@ -131,6 +131,8 @@ class RecipeDashboardViewController: BaseViewController, SkeletonTableViewDelega
             
             let recipe = self.recipes[indexPath.row]
             cell.recipeTitleLabel.text = recipe.title?.trimmingCharacters(in: .whitespacesAndNewlines)
+            cell.servingPriceLabel.text = "$" + recipe.pricePerServing!.description
+            cell.timeLabel.text = "⌚︎" + String(recipe.readyInMinutes!) + "'"
             
             // Using Kingsfire to load images
             if let imageUrl = recipe.image {
@@ -163,24 +165,28 @@ class RecipeDashboardViewController: BaseViewController, SkeletonTableViewDelega
             let detailVC = self.storyboard?.instantiateViewController(withIdentifier: "RecipeDetaolViewController") as! RecipeDetailViewController
             detailVC.recipe = selectedRecipe
             
-            self.navigationController?.pushViewController(detailVC, animated: true)
+            self.navigationController?.pushViewController(detailVC, animated: false)
         }
     }
-    
-    
-    
-    
 }
 
 extension RecipeDashboardViewController: UISearchBarDelegate {
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         // TODO: Review how to handle the pagination
-        loadRecipes(tags: searchBar.text ?? "", page: 50)
+        loadRecipes(tags: searchBar.text ?? "")
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         searchBar.text = ""
     }
     
+    func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
+        print("dsdsdsdsd")
+        searchBar.sizeToFit()
+        return true
+    }
+    
 }
+
+

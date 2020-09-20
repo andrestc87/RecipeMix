@@ -19,6 +19,7 @@ class RecipeDetailViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         print("DETAIL WITH RECIPE")
+        self.navigationController?.navigationBar.isHidden = true
     }
     
     @IBAction func saveRecipeAction(_ sender: Any) {
@@ -49,4 +50,7 @@ class RecipeDetailViewController: UIViewController {
         
      }
     
+    @IBAction func backButtonAction(_ sender: Any) {
+        self.navigationController?.popViewController(animated: true)
+    }
 }

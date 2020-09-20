@@ -11,6 +11,10 @@ import UIKit
 
 class RecipeMixUtils {
     
+    // APP COLORS
+    // TODO: Define the color
+    static let appMainBackgroundColor = UIColor(red: 38/255, green: 196/255, blue: 133/255, alpha: 1)
+    
     func createErrorAlertViewController(title: String, message: String) -> UIAlertController {
         let errorAlert = UIAlertController(title: title, message: message, preferredStyle: .alert)
 
