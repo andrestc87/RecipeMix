@@ -7,16 +7,128 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "E2222571-EB72-479C-928E-E1751010A3FA"
-            shouldBeEnabled = "No"
+            uuid = "B786F9BB-DAD6-4468-A2F1-21D6ECD10113"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "RecipeMix/RM View Controllers/RecipeDetailViewController.swift"
+            filePath = "RecipeMix/RM API/RM API Client/RecipeMixClient.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "218"
-            endingLineNumber = "218"
-            landmarkName = "isRecipeAlreadyRegistered()"
+            startingLineNumber = "87"
+            endingLineNumber = "87"
+            landmarkName = "taskForGETRequest(url:response:completion:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "B786F9BB-DAD6-4468-A2F1-21D6ECD10113 - 538cee03ed8111bb"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in static RecipeMix.RecipeMixClient.taskForGETRequest&lt;A where A: Swift.Decodable&gt;(url: Foundation.URL, response: A.Type, completion: (Swift.Optional&lt;A&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; ()) -&gt; __C.NSURLSessionTask"
+                  moduleName = "RecipeMix"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/andrestellocampos/iOS_NanoDegree/Nano_Final_Project/RecipeMix/RecipeMix/RM%20API/RM%20API%20Client/RecipeMixClient.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "91"
+                  endingLineNumber = "91"
+                  offsetFromSymbolStart = "1473">
+               </Location>
+               <Location
+                  uuid = "B786F9BB-DAD6-4468-A2F1-21D6ECD10113 - 538cee03ed8111bb"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in static RecipeMix.RecipeMixClient.taskForGETRequest&lt;A where A: Swift.Decodable&gt;(url: Foundation.URL, response: A.Type, completion: (Swift.Optional&lt;A&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; ()) -&gt; __C.NSURLSessionTask"
+                  moduleName = "RecipeMix"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/andrestellocampos/iOS_NanoDegree/Nano_Final_Project/RecipeMix/RecipeMix/RM%20API/RM%20API%20Client/RecipeMixClient.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "91"
+                  endingLineNumber = "91"
+                  offsetFromSymbolStart = "2204">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "1E648511-BDB6-44DB-80D2-F79EE8231F07"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RecipeMix/RM API/RM API Client/RecipeMixClient.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "37"
+            endingLineNumber = "37"
+            landmarkName = "searchRecipeMixRecipes(tags:completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "07C4B16F-851F-41F1-8F45-3A21D42D2A9E"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RecipeMix/RM API/RM API Client/RecipeMixClient.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "34"
+            endingLineNumber = "34"
+            landmarkName = "searchRecipeMixRecipes(tags:completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "D7AA28CA-F9FB-4D00-9D44-B64E59F6A2A8"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RecipeMix/RM API/RM API Client/RecipeMixClient.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "35"
+            endingLineNumber = "35"
+            landmarkName = "searchRecipeMixRecipes(tags:completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "D5591FA7-D9AF-4CD8-81B2-C9AF849C3611"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RecipeMix/RM API/RM API Client/RecipeMixClient.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "33"
+            endingLineNumber = "33"
+            landmarkName = "searchRecipeMixRecipes(tags:completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "6F770D83-2DFC-4A0D-9BA9-65E8CCAED185"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RecipeMix/RM API/RM API Client/RecipeMixClient.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "70"
+            endingLineNumber = "70"
+            landmarkName = "taskForGETRequest(url:response:completion:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

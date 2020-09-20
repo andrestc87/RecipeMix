@@ -82,8 +82,16 @@ class RecipeMixClient {
                     completion(responseObject, nil)
                 }
             } catch {
-                DispatchQueue.main.async {
+                
+                do {
+                    let errorResponse = try decoder.decode(RecipeResponse.self, from: data)
+                    DispatchQueue.main.async {
+                        completion(nil, errorResponse as? Error)
+                    }
+                } catch {
+                    DispatchQueue.main.async {
                         completion(nil, error)
+                    }
                 }
             }
         }
