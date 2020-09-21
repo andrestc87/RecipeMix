@@ -20,6 +20,8 @@ class RecipeDashboardViewController: BaseViewController, SkeletonTableViewDelega
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.navigationItem.largeTitleDisplayMode = .always
+        
         // Setup NavBar
         setupNavBar()
         
@@ -32,12 +34,11 @@ class RecipeDashboardViewController: BaseViewController, SkeletonTableViewDelega
     
     override func viewWillAppear(_ animated: Bool) {
         super .viewWillAppear(animated)
-        print("WILL APPEAR")
         self.navigationController?.navigationBar.isHidden = false
+        self.navigationController?.navigationBar.prefersLargeTitles = true
     }
     
     func setupNavBar() {
-        //TODO: UI Issue when scrolling and starting to search displays extra space, needs to be fixed
         // NavBar
         self.navigationController?.navigationBar.isHidden = false
         configureNavigationBar(largeTitleColor: .white, backgoundColor: RecipeMixUtils.appMainBackgroundColor, tintColor: .systemBlue, title: "Recipes", preferredLargeTitle: true)
@@ -45,7 +46,6 @@ class RecipeDashboardViewController: BaseViewController, SkeletonTableViewDelega
         // Search Controller
         let searchController = UISearchController(searchResultsController: nil)
         searchController.searchBar.delegate = self
-        //searchController.automaticallyShowsSearchResultsController = false
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.searchBar.placeholder = "Type your search here..."
         searchController.searchBar.searchTextField.backgroundColor = .white
@@ -161,11 +161,20 @@ class RecipeDashboardViewController: BaseViewController, SkeletonTableViewDelega
         if self.noResults {
             print("Nothing to do here")
         } else {
+            
+            let selectedRecipe = self.recipes[indexPath.row]
+            let recipeVC = self.storyboard?.instantiateViewController(withIdentifier: "RecipeViewController") as! RecipeViewController
+            recipeVC.recipe = selectedRecipe
+            
+            self.navigationController?.pushViewController(recipeVC, animated: false)
+            
+            /*
             let selectedRecipe = self.recipes[indexPath.row]
             let detailVC = self.storyboard?.instantiateViewController(withIdentifier: "RecipeDetaolViewController") as! RecipeDetailViewController
             detailVC.recipe = selectedRecipe
             
             self.navigationController?.pushViewController(detailVC, animated: false)
+            */
         }
     }
 }
