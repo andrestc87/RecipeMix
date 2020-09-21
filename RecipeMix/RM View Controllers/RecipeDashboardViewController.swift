@@ -180,13 +180,6 @@ extension RecipeDashboardViewController: UISearchBarDelegate {
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         searchBar.text = ""
     }
-    
-    func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
-        print("dsdsdsdsd")
-        searchBar.sizeToFit()
-        return true
-    }
-    
 }
 
 
