@@ -19,6 +19,11 @@ class RecipeViewController: UIViewController {
     @IBOutlet weak var recipePriceLabel: UILabel!
     @IBOutlet weak var recipeTimeLabel: UILabel!
     @IBOutlet weak var recipeView: UIView!
+    @IBOutlet weak var instructionsLabel: UILabel!
+    @IBOutlet weak var viewIngredientsButton: UIButton!
+    @IBOutlet weak var summaryLabel: UILabel!
+    @IBOutlet weak var instructionsContentLabel: UILabel!
+    
     
     var recipe: Recipe!
     var apiUtils = RecipeMixAPIUtils()
@@ -28,6 +33,7 @@ class RecipeViewController: UIViewController {
         self.navigationItem.title = "Recipe"
         self.navigationItem.largeTitleDisplayMode = .never
         setupRecipeContent()
+        print(recipe.image)
     }
     
     func setupRecipeContent() {
@@ -57,12 +63,17 @@ class RecipeViewController: UIViewController {
         self.recipePriceLabel.text = "$" + recipe.pricePerServing!.description
         self.recipeTimeLabel.text = "⌚︎" + String(recipe.readyInMinutes!) + "'"
         
+        self.summaryLabel.attributedText = self.recipe.summary?.htmlAttributedString(size: 15)
+        self.instructionsContentLabel.attributedText = self.recipe.instructions?.htmlAttributedString(size: 15)
+        
     }
     
     @IBAction func addRecipeButtonAction(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
     }
     
+    @IBAction func viewIngredientsButtonAction(_ sender: Any) {
+    }
     /*
      @IBAction func saveRecipeAction(_ sender: Any) {
          
@@ -97,4 +108,39 @@ class RecipeViewController: UIViewController {
      }
      */
 
+}
+
+extension String {
+    func htmlAttributedString(size: CGFloat) -> NSAttributedString? {
+        let htmlTemplate = """
+        <!doctype html>
+        <html>
+          <head>
+            <style>
+              body {
+                font-family: -apple-system;
+                font-size: \(size)px;
+              }
+            </style>
+          </head>
+          <body>
+            \(self)
+          </body>
+        </html>
+        """
+
+        guard let data = htmlTemplate.data(using: .utf8) else {
+            return nil
+        }
+
+        guard let attributedString = try? NSAttributedString(
+            data: data,
+            options: [.documentType: NSAttributedString.DocumentType.html],
+            documentAttributes: nil
+            ) else {
+            return nil
+        }
+
+        return attributedString
+    }
 }

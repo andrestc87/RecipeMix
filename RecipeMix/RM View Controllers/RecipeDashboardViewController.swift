@@ -133,7 +133,6 @@ class RecipeDashboardViewController: BaseViewController, SkeletonTableViewDelega
             cell.recipeTitleLabel.text = recipe.title?.trimmingCharacters(in: .whitespacesAndNewlines)
             cell.servingPriceLabel.text = "$" + recipe.pricePerServing!.description
             cell.timeLabel.text = "⌚︎" + String(recipe.readyInMinutes!) + "'"
-            
             // Using Kingsfire to load images
             if let imageUrl = recipe.image {
                 let resourceUrl = URL(string: imageUrl)
@@ -166,7 +165,7 @@ class RecipeDashboardViewController: BaseViewController, SkeletonTableViewDelega
             let recipeVC = self.storyboard?.instantiateViewController(withIdentifier: "RecipeViewController") as! RecipeViewController
             recipeVC.recipe = selectedRecipe
             
-            self.navigationController?.pushViewController(recipeVC, animated: false)
+            self.navigationController?.pushViewController(recipeVC, animated: true)
             
             /*
             let selectedRecipe = self.recipes[indexPath.row]
