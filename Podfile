@@ -13,5 +13,5 @@ target 'RecipeMix' do
   pod 'FacebookLogin'
   pod 'Kingfisher', '~> 5.0'
   pod 'SkeletonView'
-
+  
 end

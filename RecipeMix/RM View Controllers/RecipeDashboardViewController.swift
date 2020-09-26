@@ -166,6 +166,7 @@ class RecipeDashboardViewController: BaseViewController, SkeletonTableViewDelega
             recipeVC.recipe = selectedRecipe
             
             self.navigationController?.pushViewController(recipeVC, animated: true)
+            //self.navigationController?.present(recipeVC, animated: true, completion: nil)
             
             /*
             let selectedRecipe = self.recipes[indexPath.row]

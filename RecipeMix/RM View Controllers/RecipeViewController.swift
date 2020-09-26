@@ -32,6 +32,8 @@ class RecipeViewController: UIViewController {
         super.viewDidLoad()
         self.navigationItem.title = "Recipe"
         self.navigationItem.largeTitleDisplayMode = .never
+        // Use this validation to determine if the information is going to be from the dashboard or from the data stored on the device
+        //if !apiUtils.validateExistingRecipe(recipeId: self.recipe.id!) {
         setupRecipeContent()
         print(recipe.image)
     }
@@ -63,9 +65,31 @@ class RecipeViewController: UIViewController {
         self.recipePriceLabel.text = "$" + recipe.pricePerServing!.description
         self.recipeTimeLabel.text = "⌚︎" + String(recipe.readyInMinutes!) + "'"
         
-        self.summaryLabel.attributedText = self.recipe.summary?.htmlAttributedString(size: 15)
-        self.instructionsContentLabel.attributedText = self.recipe.instructions?.htmlAttributedString(size: 15)
+        // Getting the information removing html tags - The content was intended to be presented on HTML
+        do {
+            try self.summaryLabel.text = self.recipe.summary?.htmlToPlainText()
+        } catch {
+            self.summaryLabel.text = "No Summary information yet."
+        }
         
+        if self.recipe.analyzedInstructions!.count > 0 {
+            self.instructionsContentLabel.text = getRecipeInstructionText()
+        } else {
+            self.instructionsContentLabel.text = "No Instructions registered yet."
+        }
+    }
+    
+    func getRecipeInstructionText() -> String {
+        
+        var instructionText = ""
+        
+        for instruction in self.recipe.analyzedInstructions! {
+            for step in instruction.steps! {
+                instructionText += String(step.number!) + ". " + step.step! + "\n\n"
+            }
+        }
+        
+        return instructionText
     }
     
     @IBAction func addRecipeButtonAction(_ sender: Any) {
@@ -73,6 +97,10 @@ class RecipeViewController: UIViewController {
     }
     
     @IBAction func viewIngredientsButtonAction(_ sender: Any) {
+        
+        let ingredientsVC = self.storyboard?.instantiateViewController(withIdentifier: "IngredientsTableViewController") as! IngredientsTableViewController
+        
+        self.navigationController?.pushViewController(ingredientsVC, animated: true)
     }
     /*
      @IBAction func saveRecipeAction(_ sender: Any) {
@@ -109,8 +137,9 @@ class RecipeViewController: UIViewController {
      */
 
 }
-
+/*
 extension String {
+    
     func htmlAttributedString(size: CGFloat) -> NSAttributedString? {
         let htmlTemplate = """
         <!doctype html>
@@ -124,6 +153,7 @@ extension String {
             </style>
           </head>
           <body>
+            
             \(self)
           </body>
         </html>
@@ -142,5 +172,24 @@ extension String {
         }
 
         return attributedString
+    }
+}
+*/
+
+extension String {
+    func htmlToPlainText() throws -> String?  {
+        if isEmpty {
+            return nil
+        }
+        
+        if let data = data(using: .utf8) {
+            let attributedString = try NSAttributedString(data: data,
+                                                          options: [.documentType : NSAttributedString.DocumentType.html,
+                                                                    .characterEncoding: String.Encoding.utf8.rawValue],
+                                                          documentAttributes: nil)
+            return attributedString.string.trimmingCharacters(in: .whitespacesAndNewlines)
+        }
+        
+        return nil
     }
 }
