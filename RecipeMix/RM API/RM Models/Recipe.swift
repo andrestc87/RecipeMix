@@ -49,7 +49,7 @@ struct Recipe: Codable {
     let diets: [String]?
     let occasions: [String]?
     let winePairing: WinePairing?
-    let instructions: String?
+    var instructions: String?
     let analyzedInstructions: [Instruction]?
     let originalId: Int?
     let spoonacularSourceUrl: String?

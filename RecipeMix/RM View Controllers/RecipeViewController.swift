@@ -24,27 +24,71 @@ class RecipeViewController: UIViewController {
     @IBOutlet weak var summaryLabel: UILabel!
     @IBOutlet weak var instructionsContentLabel: UILabel!
     
-    
     var recipe: Recipe!
+    var recipeId: Int!
+    var savedRecipe: RM_Recipe!
     var apiUtils = RecipeMixAPIUtils()
+    var isRecipeSaved: Bool = false
+    var defaultButtonColor: CGColor!
+    var comesFromDashboard = Bool()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.title = "Recipe"
         self.navigationItem.largeTitleDisplayMode = .never
+        self.defaultButtonColor = self.addRecipeButton.layer.backgroundColor
         // Use this validation to determine if the information is going to be from the dashboard or from the data stored on the device
-        //if !apiUtils.validateExistingRecipe(recipeId: self.recipe.id!) {
-        setupRecipeContent()
-        print(recipe.image)
+        self.isRecipeSaved = apiUtils.validateExistingRecipe(recipeId: recipeId)
+        
+        if isRecipeSaved && !comesFromDashboard {
+            setupSavedRecipeContent()
+        } else {
+            setupRecipeContent()
+        }
     }
     
     func setupRecipeContent() {
+        //Updates the add recipe button
+        updateRecipeButton()
+        
+        //Recipe Image View
+        setupRecipeImage(image: self.recipe.image!)
+        
+        setupRecipeBasicInformation(title: self.recipe.title!, price: self.recipe.pricePerServing!, minutes: self.recipe.readyInMinutes!, summary: self.recipe.summary!)
+        
+        //Setup the instructions
+        if self.recipe.analyzedInstructions!.count > 0 {
+            self.instructionsContentLabel.text = getRecipeInstructionText()
+        } else {
+            self.instructionsContentLabel.text = "No Instructions registered yet."
+        }
+    }
+    
+    func setupSavedRecipeContent() {
+        //Updates the add recipe button
+        updateRecipeButton()
+        
+        //Recipe Image View
+        setupRecipeImage(image: self.savedRecipe.image!)
+        
+        //Setup Basic Information
+        setupRecipeBasicInformation(title: self.savedRecipe.title!, price: self.savedRecipe.pricePerServing!.doubleValue, minutes: Int(self.savedRecipe.readyInMinutes), summary: self.savedRecipe.summary!)
+        
+        //Setup the instructions
+        if self.savedRecipe.instructions!.count > 0 {
+            self.instructionsContentLabel.text = self.savedRecipe.instructions
+        } else {
+            self.instructionsContentLabel.text = "No Instructions registered yet."
+        }
+    }
+    
+    func setupRecipeImage(image: String) {
         //Recipe Image View
         self.recipeImageView.showAnimatedGradientSkeleton()
         // Using Kingsfire to load images
-        if let imageUrl = self.recipe.image {
-            let resourceUrl = URL(string: imageUrl)
-                let imageResource = ImageResource(downloadURL: resourceUrl!, cacheKey: self.recipe.image)
+        if image.count > 0 {
+            let resourceUrl = URL(string: image)
+            let imageResource = ImageResource(downloadURL: resourceUrl!, cacheKey: image)
             
             DispatchQueue.main.async {
                 self.recipeImageView.kf.setImage(with: imageResource, placeholder: nil, options: nil, progressBlock: nil) { result in
@@ -59,28 +103,32 @@ class RecipeViewController: UIViewController {
         } else {
             self.recipeImageView.hideSkeleton()
         }
-        
-        // Setting Basic Info
-        self.recipeTitleLabel.text = self.recipe.title?.trimmingCharacters(in: .whitespacesAndNewlines)
-        self.recipePriceLabel.text = "$" + recipe.pricePerServing!.description
-        self.recipeTimeLabel.text = "⌚︎" + String(recipe.readyInMinutes!) + "'"
+    }
+    
+    func setupRecipeBasicInformation(title: String, price: Double, minutes: Int, summary: String) {
+        self.recipeTitleLabel.text = title.trimmingCharacters(in: .whitespacesAndNewlines)
+        self.recipePriceLabel.text = "$" + String(format: "%.2f", price)
+        self.recipeTimeLabel.text = "⌚︎" + String(minutes) + "'"
         
         // Getting the information removing html tags - The content was intended to be presented on HTML
         do {
-            try self.summaryLabel.text = self.recipe.summary?.htmlToPlainText()
+            try self.summaryLabel.text = summary.htmlToPlainText()
         } catch {
             self.summaryLabel.text = "No Summary information yet."
         }
-        
-        if self.recipe.analyzedInstructions!.count > 0 {
-            self.instructionsContentLabel.text = getRecipeInstructionText()
+    }
+    
+    func updateRecipeButton() {
+        if !self.isRecipeSaved {
+            self.addRecipeButton.setTitle("Add to My Recipes", for: .normal)
+            self.addRecipeButton.layer.backgroundColor = self.defaultButtonColor
         } else {
-            self.instructionsContentLabel.text = "No Instructions registered yet."
+            self.addRecipeButton.setTitle("Remove from My Recipes", for: .normal)
+            self.addRecipeButton.layer.backgroundColor = UIColor.red.cgColor
         }
     }
     
     func getRecipeInstructionText() -> String {
-        
         var instructionText = ""
         
         for instruction in self.recipe.analyzedInstructions! {
@@ -93,15 +141,82 @@ class RecipeViewController: UIViewController {
     }
     
     @IBAction func addRecipeButtonAction(_ sender: Any) {
-        self.navigationController?.popViewController(animated: true)
+        if !self.isRecipeSaved {
+            do {
+                
+                self.recipe.instructions = self.instructionsContentLabel.text
+                try apiUtils.saveRecipe(recipeToSave: self.recipe)
+                
+                let alertController = UIAlertController(title: "Recipe", message: "The Recipe was registered correclty.", preferredStyle: .alert)
+                alertController.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+                
+                self.present(alertController, animated: true, completion: {
+                    self.isRecipeSaved = true
+                    //Display information
+                    self.updateRecipeButton()
+                })
+            
+            } catch {
+                let alertController = UIAlertController(title: "Error", message: "An error occurred while adding your recipe. Please, try again alter.", preferredStyle: .alert)
+                alertController.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+                
+                self.present(alertController, animated: true, completion: nil)
+            }
+            
+        } else {
+            
+            let alert = UIAlertController(title: "Remove Recipe", message: "Are you sure you want to remove this Recipe from your selection?", preferredStyle: .alert)
+
+            let noAction = UIAlertAction(title: "No", style: .cancel, handler: nil)
+            let yesAction = UIAlertAction(title: "Yes", style: .default) { [weak self] action in
+                
+                //TODO: Implement the delete Recipe code
+                
+            }
+            
+            alert.addAction(noAction)
+            alert.addAction(yesAction)
+            present(alert, animated: true, completion: {
+                self.isRecipeSaved = false
+                self.updateRecipeButton()
+            })
+        }
     }
     
     @IBAction func viewIngredientsButtonAction(_ sender: Any) {
         
-        let ingredientsVC = self.storyboard?.instantiateViewController(withIdentifier: "IngredientsTableViewController") as! IngredientsTableViewController
+        //TODO: Add logic to validate from were to get the ingredients(Api or CoreData)
         
-        self.navigationController?.pushViewController(ingredientsVC, animated: true)
+        if self.recipe.extendedIngredients!.count > 0 {
+            let ingredients = getRecipeIngredients(extendedIngredients: self.recipe.extendedIngredients!)
+            let ingredientsVC = self.storyboard?.instantiateViewController(withIdentifier: "IngredientsTableViewController") as! IngredientsTableViewController
+            ingredientsVC.ingredients = ingredients
+            
+            self.navigationController?.pushViewController(ingredientsVC, animated: true)
+            
+        } else {
+            
+            let alertController = UIAlertController(title: "Info", message: "There are no ingrdients registered yet.", preferredStyle: .alert)
+            alertController.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+            
+            self.present(alertController, animated: true, completion: nil)
+        }
     }
+    
+    func getRecipeIngredients(extendedIngredients: [ExtendedIngredients]) -> [String] {
+        var ingredients = [String]()
+        
+        for ingredient in extendedIngredients {
+            ingredients.append(ingredient.originalString!)
+        }
+        
+        return ingredients
+    }
+    
+    func getStoredRecipeIngredients() {
+        
+    }
+    
     /*
      @IBAction func saveRecipeAction(_ sender: Any) {
          
@@ -137,44 +252,6 @@ class RecipeViewController: UIViewController {
      */
 
 }
-/*
-extension String {
-    
-    func htmlAttributedString(size: CGFloat) -> NSAttributedString? {
-        let htmlTemplate = """
-        <!doctype html>
-        <html>
-          <head>
-            <style>
-              body {
-                font-family: -apple-system;
-                font-size: \(size)px;
-              }
-            </style>
-          </head>
-          <body>
-            
-            \(self)
-          </body>
-        </html>
-        """
-
-        guard let data = htmlTemplate.data(using: .utf8) else {
-            return nil
-        }
-
-        guard let attributedString = try? NSAttributedString(
-            data: data,
-            options: [.documentType: NSAttributedString.DocumentType.html],
-            documentAttributes: nil
-            ) else {
-            return nil
-        }
-
-        return attributedString
-    }
-}
-*/
 
 extension String {
     func htmlToPlainText() throws -> String?  {

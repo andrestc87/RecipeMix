@@ -164,6 +164,8 @@ class RecipeDashboardViewController: BaseViewController, SkeletonTableViewDelega
             let selectedRecipe = self.recipes[indexPath.row]
             let recipeVC = self.storyboard?.instantiateViewController(withIdentifier: "RecipeViewController") as! RecipeViewController
             recipeVC.recipe = selectedRecipe
+            recipeVC.recipeId = Int(selectedRecipe.id!)
+            recipeVC.comesFromDashboard = true
             
             self.navigationController?.pushViewController(recipeVC, animated: true)
             //self.navigationController?.present(recipeVC, animated: true, completion: nil)
