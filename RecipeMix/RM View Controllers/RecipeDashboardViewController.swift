@@ -184,7 +184,6 @@ class RecipeDashboardViewController: BaseViewController, SkeletonTableViewDelega
 extension RecipeDashboardViewController: UISearchBarDelegate {
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        // TODO: Review how to handle the pagination
         loadRecipes(tags: searchBar.text ?? "")
     }
     

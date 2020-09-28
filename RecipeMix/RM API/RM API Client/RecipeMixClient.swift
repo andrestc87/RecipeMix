@@ -34,7 +34,6 @@ class RecipeMixClient {
         RecipeMixClient.taskForGETRequest(url: searchRecipesUrl!, response: RecipeResponse.self) { (response, error) in
                 if let response = response {
                     completion(response.recipes, nil)
-                    print("RECIPEEEEES")
                 } else {
                     completion(nil, error)
                 }

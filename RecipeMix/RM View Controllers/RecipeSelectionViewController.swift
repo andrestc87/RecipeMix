@@ -19,6 +19,8 @@ class RecipeSelectionViewController: UIViewController, UITableViewDelegate, UITa
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.navigationItem.largeTitleDisplayMode = .always
+        
         //Setup NavBar
         setupNavBar()
         //Setup the Table View
@@ -61,7 +63,6 @@ class RecipeSelectionViewController: UIViewController, UITableViewDelegate, UITa
             self.selectionTableView.reloadData()
         }
         self.noResults = self.recipes.count == 0 ? true : false
-        print("ddddddd")
     }
     
     // TableView Delegates
@@ -86,6 +87,12 @@ class RecipeSelectionViewController: UIViewController, UITableViewDelegate, UITa
             let cell = tableView.dequeueReusableCell(withIdentifier: "RecipeSelectionTableViewCell", for: indexPath) as! RecipeSelectionTableViewCell
             
             cell.selectionStyle = .none
+            
+            if (indexPath.row % 2 == 0) {
+                cell.backgroundColor = RecipeMixUtils.appCellAlternativeBackgroundColor
+            } else {
+                cell.backgroundColor = UIColor.clear
+            }
             
             let recipe = self.recipes[indexPath.row]
             cell.recipeTitleLabel.text = recipe.title

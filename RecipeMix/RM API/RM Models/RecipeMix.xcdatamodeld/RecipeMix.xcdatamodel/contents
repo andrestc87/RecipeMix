@@ -37,6 +37,11 @@
         <attribute name="unit" optional="YES" attributeType="String"/>
         <relationship name="recipe" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="RM_Recipe" inverseName="extendedIngredients" inverseEntity="RM_Recipe"/>
     </entity>
+    <entity name="RM_Groceries" representedClassName="RM_Groceries" syncable="YES" codeGenerationType="class">
+        <attribute name="complete" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <relationship name="recipe" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="RM_Recipe" inverseName="groceries" inverseEntity="RM_Recipe"/>
+    </entity>
     <entity name="RM_Ingredients" representedClassName="RM_Ingredients" syncable="YES" codeGenerationType="class">
         <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="image" optional="YES" attributeType="String"/>
@@ -89,6 +94,7 @@
         <relationship name="diets" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="RM_Diets" inverseName="recipe" inverseEntity="RM_Diets"/>
         <relationship name="dishTypes" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="RM_DishTypes" inverseName="recipe" inverseEntity="RM_DishTypes"/>
         <relationship name="extendedIngredients" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="RM_ExtendedIngredients" inverseName="recipe" inverseEntity="RM_ExtendedIngredients"/>
+        <relationship name="groceries" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="RM_Groceries" inverseName="recipe" inverseEntity="RM_Groceries"/>
         <relationship name="occasions" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="RM_Occasions" inverseName="recipe" inverseEntity="RM_Occasions"/>
     </entity>
     <entity name="RM_Steps" representedClassName="RM_Steps" syncable="YES" codeGenerationType="class">
@@ -109,7 +115,8 @@
         <element name="RM_Ingredients" positionX="144.6015625" positionY="474.45703125" width="128" height="118"/>
         <element name="RM_Length" positionX="145.703125" positionY="762.33203125" width="128" height="88"/>
         <element name="RM_Occasions" positionX="-230.79296875" positionY="180.36328125" width="128" height="73"/>
-        <element name="RM_Recipe" positionX="-607.390625" positionY="86.88671875" width="128" height="583"/>
+        <element name="RM_Recipe" positionX="-607.390625" positionY="86.88671875" width="128" height="598"/>
         <element name="RM_Steps" positionX="-43.453125" positionY="522.625" width="128" height="133"/>
+        <element name="RM_Groceries" positionX="-570.08203125" positionY="862.30078125" width="128" height="88"/>
     </elements>
 </model>

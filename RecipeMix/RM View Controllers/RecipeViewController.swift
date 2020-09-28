@@ -11,7 +11,7 @@ import CoreData
 import SkeletonView
 import Kingfisher
 
-class RecipeViewController: UIViewController {
+class RecipeViewController: UIViewController, NSFetchedResultsControllerDelegate {
     
     @IBOutlet weak var recipeImageView: UIImageView!
     @IBOutlet weak var addRecipeButton: UIButton!
@@ -31,6 +31,7 @@ class RecipeViewController: UIViewController {
     var isRecipeSaved: Bool = false
     var defaultButtonColor: CGColor!
     var comesFromDashboard = Bool()
+    var fetchedResultsController: NSFetchedResultsController<RM_ExtendedIngredients>!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,7 +39,10 @@ class RecipeViewController: UIViewController {
         self.navigationItem.largeTitleDisplayMode = .never
         self.defaultButtonColor = self.addRecipeButton.layer.backgroundColor
         // Use this validation to determine if the information is going to be from the dashboard or from the data stored on the device
-        self.isRecipeSaved = apiUtils.validateExistingRecipe(recipeId: recipeId)
+        self.isRecipeSaved = apiUtils.validateExistingRecipe(recipeId: self.recipeId)
+        if self.isRecipeSaved {
+            self.savedRecipe = self.apiUtils.getRecipeById(recipeId: self.recipeId)
+        }
         
         if isRecipeSaved && !comesFromDashboard {
             setupSavedRecipeContent()
@@ -154,6 +158,7 @@ class RecipeViewController: UIViewController {
                     self.isRecipeSaved = true
                     //Display information
                     self.updateRecipeButton()
+                    self.savedRecipe = self.apiUtils.getRecipeById(recipeId: self.recipe.id!)
                 })
             
             } catch {
@@ -170,32 +175,38 @@ class RecipeViewController: UIViewController {
             let noAction = UIAlertAction(title: "No", style: .cancel, handler: nil)
             let yesAction = UIAlertAction(title: "Yes", style: .default) { [weak self] action in
                 
-                //TODO: Implement the delete Recipe code
-                
+                self?.apiUtils.deleteRecipe(recipe: (self?.savedRecipe)!)
+                self?.isRecipeSaved = false
+                self?.savedRecipe = nil
+                self?.updateRecipeButton()
             }
             
             alert.addAction(noAction)
             alert.addAction(yesAction)
-            present(alert, animated: true, completion: {
-                self.isRecipeSaved = false
-                self.updateRecipeButton()
-            })
+            present(alert, animated: true, completion: nil)
         }
     }
     
     @IBAction func viewIngredientsButtonAction(_ sender: Any) {
+        var ingredientsArray: [String] = []
         
-        //TODO: Add logic to validate from were to get the ingredients(Api or CoreData)
         
-        if self.recipe.extendedIngredients!.count > 0 {
-            let ingredients = getRecipeIngredients(extendedIngredients: self.recipe.extendedIngredients!)
-            let ingredientsVC = self.storyboard?.instantiateViewController(withIdentifier: "IngredientsTableViewController") as! IngredientsTableViewController
-            ingredientsVC.ingredients = ingredients
+        if self.isRecipeSaved && !self.comesFromDashboard {
+            ingredientsArray = getStoredRecipeIngredients(recipe: self.savedRecipe)
+        } else {
+            ingredientsArray = getRecipeIngredients(extendedIngredients: self.recipe.extendedIngredients!)
+        }
+        
+        if ingredientsArray.count > 0 {
+            let ingredientsVC = self.storyboard?.instantiateViewController(withIdentifier: "IngredientsViewController") as! IngredientsViewController
+            
+            ingredientsVC.ingredients = ingredientsArray
+            ingredientsVC.savedRecipe = self.savedRecipe
+            ingredientsVC.isRecipeSaved = self.isRecipeSaved
             
             self.navigationController?.pushViewController(ingredientsVC, animated: true)
             
         } else {
-            
             let alertController = UIAlertController(title: "Info", message: "There are no ingrdients registered yet.", preferredStyle: .alert)
             alertController.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
             
@@ -213,44 +224,36 @@ class RecipeViewController: UIViewController {
         return ingredients
     }
     
-    func getStoredRecipeIngredients() {
+    func getStoredRecipeIngredients(recipe: RM_Recipe) -> [String] {
+        var ingredientsArray: [String] = []
         
+        let fetchRequest: NSFetchRequest<RM_ExtendedIngredients> = RM_ExtendedIngredients.fetchRequest()
+        let predicate = NSPredicate(format: "recipe == %@", recipe)
+        
+        fetchRequest.predicate = predicate
+        let sortDescriptor = NSSortDescriptor(key: "originalString", ascending: true)
+        fetchRequest.sortDescriptors = [sortDescriptor]
+        
+        fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext:
+            DataController.shared.viewContext, sectionNameKeyPath: nil, cacheName: nil)
+        
+        fetchedResultsController.delegate = self
+        
+        do {
+            try fetchedResultsController.performFetch()
+            let ingredientsCount = try fetchedResultsController.managedObjectContext.count(for: fetchedResultsController.fetchRequest)
+            var ingredient = RM_ExtendedIngredients()
+            
+            for index in 0..<ingredientsCount {
+                ingredient = fetchedResultsController.object(at: IndexPath(row: index, section: 0))
+                ingredientsArray.append(ingredient.originalString!)
+            }
+        } catch {
+            print("error performing fetch")
+        }
+        
+        return ingredientsArray
     }
-    
-    /*
-     @IBAction func saveRecipeAction(_ sender: Any) {
-         
-         if !apiUtils.validateExistingRecipe(recipeId: self.recipe.id!) {
-             do {
-                 try apiUtils.saveRecipe(recipeToSave: self.recipe)
-             } catch {
-                 let alertController = UIAlertController(title: "Error", message: "An error occurred while adding your recipe. Please, try again alter.", preferredStyle: .alert)
-                 alertController.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
-                 
-                 self.present(alertController, animated: true, completion: nil)
-             }
-             
-         } else {
-             let alertController = UIAlertController(title: "Error", message: "The Recipe was already added.", preferredStyle: .alert)
-             alertController.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
-             
-             self.present(alertController, animated: true, completion: nil)
-         }
-         
-     }
-     
-     @IBAction func loadRecipesButtonAction(_ sender: Any) {
-         
-         let results = apiUtils.getSavedRecipes()
-         print(results.count)
-         
-      }
-     
-     @IBAction func backButtonAction(_ sender: Any) {
-         self.navigationController?.popViewController(animated: true)
-     }
-     */
-
 }
 
 extension String {

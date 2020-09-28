@@ -162,7 +162,6 @@ class RecipeMixAPIUtils {
                     extendedIngredientToSave.unit = extendendIngredient.unit
                 }
             }
-            
         }
         
         try DataController.shared.viewContext.save()
@@ -192,4 +191,56 @@ class RecipeMixAPIUtils {
         return (savedRecipes.count == 1) ? true : false
     }
     
+    func getRecipeById(recipeId: Int) -> RM_Recipe {
+        var savedRecipe = RM_Recipe()
+        let fetchRequest: NSFetchRequest<RM_Recipe> = RM_Recipe.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "id == %i", recipeId)
+        if let results = try? DataController.shared.viewContext.fetch(fetchRequest){
+            savedRecipe = results[0]
+        }
+        
+        return savedRecipe
+    }
+    
+    func saveIngredients(recipe: RM_Recipe, ingredients: [String]) throws {
+        deleteGroceries(recipe: recipe)
+        for ingredient in ingredients {
+            let groceryToSave = RM_Groceries(context: DataController.shared.viewContext)
+            groceryToSave.recipe = recipe
+            groceryToSave.complete = false
+            groceryToSave.name = ingredient
+            try DataController.shared.viewContext.save()
+        }
+    }
+    
+    func getGroceries() -> [RM_Groceries] {
+        var savedGroceries = [RM_Groceries]()
+        let fetchRequest: NSFetchRequest<RM_Groceries> = RM_Groceries.fetchRequest()
+        
+        let sortDescriptor = NSSortDescriptor(key: "recipe", ascending: false)
+        fetchRequest.sortDescriptors = [sortDescriptor]
+        
+        if let results = try? DataController.shared.viewContext.fetch(fetchRequest){
+            savedGroceries = results
+        }
+        
+        return savedGroceries
+    }
+    
+    func deleteGroceries(recipe: RM_Recipe) {
+        let fetchRequest: NSFetchRequest<RM_Groceries> = RM_Groceries.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "recipe == %@", recipe)
+        if let results = try? DataController.shared.viewContext.fetch(fetchRequest){
+            for grocery in results {
+                DataController.shared.viewContext.delete(grocery)
+                try? DataController.shared.viewContext.save()
+            }
+        }
+    }
+    
+    func deleteRecipe(recipe: RM_Recipe) {
+        DataController.shared.viewContext.delete(recipe)
+        try? DataController.shared.viewContext.save()
+    }
 }
+

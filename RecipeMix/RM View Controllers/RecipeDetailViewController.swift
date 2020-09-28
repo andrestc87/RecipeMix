@@ -18,7 +18,6 @@ class RecipeDetailViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        print("DETAIL WITH RECIPE")
         self.navigationController?.navigationBar.isHidden = true
     }
     
