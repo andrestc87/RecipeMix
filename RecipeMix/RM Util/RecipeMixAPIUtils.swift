@@ -217,7 +217,7 @@ class RecipeMixAPIUtils {
         var savedGroceries = [RM_Groceries]()
         let fetchRequest: NSFetchRequest<RM_Groceries> = RM_Groceries.fetchRequest()
         
-        let sortDescriptor = NSSortDescriptor(key: "recipe", ascending: false)
+        let sortDescriptor = NSSortDescriptor(key: "recipe.registeredDate", ascending: false)
         fetchRequest.sortDescriptors = [sortDescriptor]
         
         if let results = try? DataController.shared.viewContext.fetch(fetchRequest){

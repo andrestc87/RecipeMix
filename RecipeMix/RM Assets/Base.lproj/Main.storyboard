@@ -584,7 +584,7 @@
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rk2-Rv-mhE" userLabel="addGroceriesButton">
                                 <rect key="frame" x="334" y="782" width="60" height="60"/>
-                                <color key="backgroundColor" red="0.01334087889" green="0.65968749999999998" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.01334087889" green="0.76862745098039209" blue="0.32941176470588235" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="60" id="TRD-de-tSi"/>
                                     <constraint firstAttribute="height" constant="60" id="Tan-Lb-7Ls"/>
@@ -802,25 +802,132 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yns-5b-UCu">
-                                <rect key="frame" x="155" y="433" width="104" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Load Groceries"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="tZh-EC-4FV" userLabel="groceriesTableView">
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="GroceryTableViewCell" rowHeight="95" id="g7a-wa-hwH" customClass="GroceryTableViewCell" customModule="RecipeMix" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="95"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="g7a-wa-hwH" id="yBE-dH-yM9">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="95"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4le-0u-8lI" userLabel="groceryLabel">
+                                                    <rect key="frame" x="30" y="21" width="354" height="53"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="4le-0u-8lI" firstAttribute="bottom" secondItem="yBE-dH-yM9" secondAttribute="bottomMargin" constant="-10" id="DUi-YV-nhI"/>
+                                                <constraint firstItem="4le-0u-8lI" firstAttribute="trailing" secondItem="yBE-dH-yM9" secondAttribute="trailingMargin" constant="-10" id="GwC-on-7q9"/>
+                                                <constraint firstItem="4le-0u-8lI" firstAttribute="leading" secondItem="yBE-dH-yM9" secondAttribute="leadingMargin" constant="10" id="KzY-ua-mhH"/>
+                                                <constraint firstItem="4le-0u-8lI" firstAttribute="top" secondItem="yBE-dH-yM9" secondAttribute="topMargin" constant="10" id="lDQ-bx-e9O"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="groceryLabel" destination="4le-0u-8lI" id="trV-6P-KSD"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
                                 <connections>
-                                    <action selector="loadGroceriesButtonAction:" destination="OTv-jg-EBG" eventType="touchUpInside" id="940-DN-QTH"/>
+                                    <outlet property="dataSource" destination="OTv-jg-EBG" id="zSw-pW-8Rn"/>
+                                    <outlet property="delegate" destination="OTv-jg-EBG" id="leY-bx-U8K"/>
+                                </connections>
+                            </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pn7-iB-vDW" userLabel="findStoreButton">
+                                <rect key="frame" x="334" y="733" width="60" height="60"/>
+                                <color key="backgroundColor" red="0.011764705882352941" green="0.76862745098039209" blue="0.32941176470588235" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="FEE-Fj-BC4"/>
+                                    <constraint firstAttribute="width" constant="60" id="G1z-99-Fk4"/>
+                                </constraints>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" image="location.fill" catalog="system"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="30"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="findStoreButtonAction:" destination="OTv-jg-EBG" eventType="touchUpInside" id="gJa-An-O6B"/>
+                                    <segue destination="hRS-jQ-dxv" kind="presentation" id="4Bh-QB-IfR"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="tZh-EC-4FV" firstAttribute="leading" secondItem="bdf-mz-Vcv" secondAttribute="leading" id="0yX-nF-4Ap"/>
+                            <constraint firstItem="bdf-mz-Vcv" firstAttribute="bottom" secondItem="Pn7-iB-vDW" secondAttribute="bottom" constant="20" id="NVS-pc-I0H"/>
+                            <constraint firstItem="tZh-EC-4FV" firstAttribute="bottom" secondItem="bdf-mz-Vcv" secondAttribute="bottom" id="PeH-YH-7ai"/>
+                            <constraint firstItem="bdf-mz-Vcv" firstAttribute="trailing" secondItem="Pn7-iB-vDW" secondAttribute="trailing" constant="20" id="U0t-X5-3UT"/>
+                            <constraint firstItem="tZh-EC-4FV" firstAttribute="trailing" secondItem="bdf-mz-Vcv" secondAttribute="trailing" id="XKR-wa-PbR"/>
+                            <constraint firstItem="tZh-EC-4FV" firstAttribute="top" secondItem="bdf-mz-Vcv" secondAttribute="top" id="YqR-iH-8IG"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="bdf-mz-Vcv"/>
                     </view>
                     <navigationItem key="navigationItem" title="Groceries List" largeTitleDisplayMode="always" id="IbQ-kr-LE5">
                         <barButtonItem key="rightBarButtonItem" title="Log Out" id="s2x-Ze-ND4"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="groceriesTableView" destination="tZh-EC-4FV" id="FyA-g0-mU7"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="D4I-9f-kUJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4106" y="895"/>
+            <point key="canvasLocation" x="4105.7971014492759" y="894.64285714285711"/>
+        </scene>
+        <!--Find Store View Controller-->
+        <scene sceneID="Cw7-Be-ay8">
+            <objects>
+                <viewController storyboardIdentifier="FindStoreViewController" id="hRS-jQ-dxv" customClass="FindStoreViewController" customModule="RecipeMix" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="h9t-K1-ZUz">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="0K2-BL-IcD" userLabel="mapView">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                            </mapView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ceu-18-QuM" userLabel="closeButton">
+                                <rect key="frame" x="354" y="20" width="40" height="40"/>
+                                <color key="backgroundColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="Exc-b7-5YW"/>
+                                    <constraint firstAttribute="height" constant="40" id="uOC-uU-PCM"/>
+                                </constraints>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" image="xmark.circle.fill" catalog="system"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="closeButtonAction:" destination="hRS-jQ-dxv" eventType="touchUpInside" id="S8X-Ja-MRK"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="0K2-BL-IcD" firstAttribute="trailing" secondItem="1Fq-hR-fAN" secondAttribute="trailing" id="1is-Kg-AfF"/>
+                            <constraint firstItem="ceu-18-QuM" firstAttribute="top" secondItem="1Fq-hR-fAN" secondAttribute="top" constant="20" id="EgM-AH-6x4"/>
+                            <constraint firstItem="0K2-BL-IcD" firstAttribute="top" secondItem="1Fq-hR-fAN" secondAttribute="top" id="K5m-c5-FYf"/>
+                            <constraint firstItem="1Fq-hR-fAN" firstAttribute="trailing" secondItem="ceu-18-QuM" secondAttribute="trailing" constant="20" id="bh9-cM-NYd"/>
+                            <constraint firstItem="0K2-BL-IcD" firstAttribute="leading" secondItem="1Fq-hR-fAN" secondAttribute="leading" id="jSG-wP-irn"/>
+                            <constraint firstItem="0K2-BL-IcD" firstAttribute="bottom" secondItem="1Fq-hR-fAN" secondAttribute="bottom" id="uRx-tx-hZE"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="1Fq-hR-fAN"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="dUD-OA-68y"/>
+                    <connections>
+                        <outlet property="mapView" destination="0K2-BL-IcD" id="bpA-N0-mJv"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cUM-nY-VIb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5026.0869565217399" y="914.73214285714278"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="T6x-hJ-Wv2">
@@ -847,5 +954,7 @@
         <image name="Ingredients" width="25" height="25"/>
         <image name="Recipes" width="25" height="25"/>
         <image name="cart.fill" catalog="system" width="128" height="102"/>
+        <image name="location.fill" catalog="system" width="128" height="115"/>
+        <image name="xmark.circle.fill" catalog="system" width="128" height="121"/>
     </resources>
 </document>

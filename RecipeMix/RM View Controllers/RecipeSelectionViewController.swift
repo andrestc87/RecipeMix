@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class RecipeSelectionViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class RecipeSelectionViewController: BaseViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var selectionTableView: UITableView!
     
