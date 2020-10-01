@@ -24,8 +24,8 @@ class AuthViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        title = "Login"
+        
+        self.navigationController?.navigationBar.isHidden = true
         
         // Firebase Analytics Event
         Analytics.logEvent("InitInitialScreen", parameters: ["message":"Firebase integration with RecipeMix app completed"])

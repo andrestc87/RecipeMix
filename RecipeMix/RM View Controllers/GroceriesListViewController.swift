@@ -32,15 +32,20 @@ class GroceriesListViewController: BaseViewController, UITableViewDelegate, UITa
         setupNavBar()
         //Setup TableView
         setupGroceriesTableView()
-        //Load Groceries
         loadGroceries()
-    
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.navigationBar.isHidden = false
         self.navigationController?.navigationBar.prefersLargeTitles = true
+        //Load Groceries
+        loadGroceries()
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        self.groceryArray = []
     }
     
     func setupNavBar() {
@@ -64,10 +69,11 @@ class GroceriesListViewController: BaseViewController, UITableViewDelegate, UITa
     
     func loadGroceries() {
         var sections = [String]()
-        
+        self.groceryArray = []
+        self.groceries = []
         self.groceries = apiUtils.getGroceries()
         
-        self.noResults = groceries.count == 0 ? true : false
+        self.noResults = self.groceries.count == 0 ? true : false
         
         //Sections
         for grocery in groceries {
@@ -89,12 +95,6 @@ class GroceriesListViewController: BaseViewController, UITableViewDelegate, UITa
         }
         
         self.groceriesTableView.reloadData()
-        
-        /*
-        for grocery in groceries {
-            print(grocery.name! + " - " + (grocery.recipe?.title)!)
-        }
-        */
     }
 
     // TableView Delegates

@@ -62,9 +62,9 @@ class RecipeSelectionViewController: BaseViewController, UITableViewDelegate, UI
         
         if let results = try? DataController.shared.viewContext.fetch(fetchRequest) {
             self.recipes = results
+            self.noResults = self.recipes.count == 0 ? true : false
             self.selectionTableView.reloadData()
         }
-        self.noResults = self.recipes.count == 0 ? true : false
     }
     
     // TableView Delegates
@@ -81,7 +81,7 @@ class RecipeSelectionViewController: BaseViewController, UITableViewDelegate, UI
             let noResultsCell = UITableViewCell(style: UITableViewCell.CellStyle.default, reuseIdentifier: "NoResultsCell")
            
             noResultsCell.selectionStyle = .none
-            noResultsCell.textLabel?.text = "No recipes found."
+            noResultsCell.textLabel?.text = "No recipes were added yet."
             noResultsCell.textLabel?.textAlignment = .center
             
             return noResultsCell
@@ -124,3 +124,4 @@ class RecipeSelectionViewController: BaseViewController, UITableViewDelegate, UI
     }
 
 }
+
