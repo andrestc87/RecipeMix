@@ -33,6 +33,8 @@ class RecipeSelectionViewController: BaseViewController, UITableViewDelegate, UI
         super.viewWillAppear(animated)
         self.navigationController?.navigationBar.isHidden = false
         self.navigationController?.navigationBar.prefersLargeTitles = true
+        //Load the recipes stored in the device
+        loadRecipeSelection()
     }
     
     func setupNavBar() {
@@ -110,7 +112,6 @@ class RecipeSelectionViewController: BaseViewController, UITableViewDelegate, UI
         if self.noResults {
             print("Nothing to do here")
         } else {
-            
             let selectedRecipe = self.recipes[indexPath.row]
             let recipeVC = self.storyboard?.instantiateViewController(withIdentifier: "RecipeViewController") as! RecipeViewController
             recipeVC.savedRecipe = selectedRecipe
