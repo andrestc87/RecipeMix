@@ -11,6 +11,5 @@ import UIKit
 class GroceryTableViewCell: UITableViewCell {
     
     @IBOutlet weak var groceryLabel: UILabel!
-    
-    
+
 }

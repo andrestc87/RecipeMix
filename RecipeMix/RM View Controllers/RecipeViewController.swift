@@ -38,6 +38,7 @@ class RecipeViewController: UIViewController, NSFetchedResultsControllerDelegate
         self.navigationItem.title = "Recipe"
         self.navigationItem.largeTitleDisplayMode = .never
         self.defaultButtonColor = self.addRecipeButton.layer.backgroundColor
+        
         // Use this validation to determine if the information is going to be from the dashboard or from the data stored on the device
         self.isRecipeSaved = apiUtils.validateExistingRecipe(recipeId: self.recipeId)
         if self.isRecipeSaved {
@@ -257,6 +258,8 @@ class RecipeViewController: UIViewController, NSFetchedResultsControllerDelegate
 }
 
 extension String {
+    
+    // Some elements from the recipe are in HTML, with this we will remove all the HTML tags
     func htmlToPlainText() throws -> String?  {
         if isEmpty {
             return nil

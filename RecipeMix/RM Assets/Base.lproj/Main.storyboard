@@ -10,7 +10,7 @@
         <!--Auth View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="AuthViewController" customModule="RecipeMix" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AuthViewController" id="BYZ-38-t0r" customClass="AuthViewController" customModule="RecipeMix" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -217,7 +217,11 @@
                         <viewLayoutGuide key="safeArea" id="eNu-Z8-fTQ"/>
                     </view>
                     <navigationItem key="navigationItem" title="Recipes" largeTitleDisplayMode="always" id="dFx-xD-Wyq">
-                        <barButtonItem key="rightBarButtonItem" title="Log Out" id="ASq-Iy-pA8"/>
+                        <barButtonItem key="rightBarButtonItem" title="Log Out" id="ASq-Iy-pA8">
+                            <connections>
+                                <action selector="logOutButtonAction:" destination="0Qr-ch-leT" id="FFA-Zf-Ipj"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="selectionTableView" destination="hiI-9R-if5" id="hMJ-oC-Mal"/>
@@ -407,7 +411,7 @@
                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
                                                 </userDefinedRuntimeAttributes>
                                             </imageView>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f7a-MT-hcw" userLabel="recipeTitleView" customClass="ShadowView" customModule="RecipeMix" customModuleProvider="target">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f7a-MT-hcw" userLabel="recipeTitleView">
                                                 <rect key="frame" x="30" y="200" width="354" height="206.5"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5i4-d7-uz9" userLabel="addRecipeButton">
@@ -681,54 +685,10 @@
             </objects>
             <point key="canvasLocation" x="6014.4927536231889" y="-536.38392857142856"/>
         </scene>
-        <!--Recipe Detail View Controller-->
-        <scene sceneID="bgU-lD-Aqk">
-            <objects>
-                <viewController storyboardIdentifier="RecipeDetaolViewController" hidesBottomBarWhenPushed="YES" id="aIi-iB-fGY" customClass="RecipeDetailViewController" customModule="RecipeMix" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Ero-ET-eAw">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rMe-ab-DyA">
-                                <rect key="frame" x="190" y="437" width="34" height="26"/>
-                                <state key="normal" title="Save"/>
-                                <connections>
-                                    <action selector="saveRecipeAction:" destination="aIi-iB-fGY" eventType="touchUpInside" id="oMg-bT-ERA"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mL5-om-iNY">
-                                <rect key="frame" x="196" y="520" width="34" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Load"/>
-                                <connections>
-                                    <action selector="loadRecipesButtonAction:" destination="aIi-iB-fGY" eventType="touchUpInside" id="Mcm-7E-GfT"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jhs-3K-GWj">
-                                <rect key="frame" x="196" y="613" width="34" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Back"/>
-                                <connections>
-                                    <action selector="backButtonAction:" destination="aIi-iB-fGY" eventType="touchUpInside" id="90e-bK-Tay"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <constraints>
-                            <constraint firstItem="rMe-ab-DyA" firstAttribute="centerX" secondItem="Ero-ET-eAw" secondAttribute="centerX" id="0WP-xj-eyt"/>
-                            <constraint firstItem="rMe-ab-DyA" firstAttribute="centerY" secondItem="Ero-ET-eAw" secondAttribute="centerY" id="IyO-OZ-BIk"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="ghm-6E-ir7"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="a0o-O7-rZm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="7749" y="-548"/>
-        </scene>
         <!--Dashboard Tab Bar Controller-->
         <scene sceneID="YQG-B9-7eM">
             <objects>
-                <tabBarController storyboardIdentifier="DashboardTabBarIdentifier" id="JNX-Po-Ou7" customClass="DashboardTabBarController" customModule="RecipeMix" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="MainTabBarController" id="JNX-Po-Ou7" customClass="DashboardTabBarController" customModule="RecipeMix" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="83r-Gy-zlr">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -744,66 +704,10 @@
             </objects>
             <point key="canvasLocation" x="1497" y="161"/>
         </scene>
-        <!--Home View Controller-->
-        <scene sceneID="KY8-dK-8iU">
-            <objects>
-                <viewController storyboardIdentifier="HomeViewController" id="tXG-h4-cex" customClass="HomeViewController" customModule="RecipeMix" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="on9-bv-roR">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="QZl-PD-9JI">
-                                <rect key="frame" x="16" y="60" width="382" height="140"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Gu-r7-xaL" userLabel="emailLabel">
-                                        <rect key="frame" x="0.0" y="0.0" width="382" height="40"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Provider" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fmV-My-PoO" userLabel="providerLabel">
-                                        <rect key="frame" x="0.0" y="50" width="382" height="40"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JCd-vZ-SHn">
-                                        <rect key="frame" x="0.0" y="100" width="382" height="40"/>
-                                        <color key="backgroundColor" red="0.17254901959999999" green="0.21960784310000001" blue="0.2901960784" alpha="0.84705882349999995" colorSpace="calibratedRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="40" id="3fJ-I9-xMi"/>
-                                        </constraints>
-                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <state key="normal" title="Logout"/>
-                                        <connections>
-                                            <action selector="logoutButtonAction:" destination="tXG-h4-cex" eventType="touchUpInside" id="Udt-zS-xOV"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                            </stackView>
-                        </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <constraints>
-                            <constraint firstItem="QZl-PD-9JI" firstAttribute="top" secondItem="OCE-A0-sb7" secondAttribute="top" constant="16" id="3iF-NO-cnD"/>
-                            <constraint firstItem="OCE-A0-sb7" firstAttribute="trailing" secondItem="QZl-PD-9JI" secondAttribute="trailing" constant="16" id="MuL-z5-vmn"/>
-                            <constraint firstItem="QZl-PD-9JI" firstAttribute="leading" secondItem="OCE-A0-sb7" secondAttribute="leading" constant="16" id="Vm6-Cv-fRA"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="OCE-A0-sb7"/>
-                    </view>
-                    <connections>
-                        <outlet property="emailLabel" destination="1Gu-r7-xaL" id="OdB-L7-hE1"/>
-                        <outlet property="logoutButton" destination="JCd-vZ-SHn" id="V8o-yJ-pYs"/>
-                        <outlet property="providerLabel" destination="fmV-My-PoO" id="cPs-ux-mVO"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="had-Ax-d5U" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1423" y="-548"/>
-        </scene>
         <!--Navigation Controller-->
         <scene sceneID="6RK-9r-gXt">
             <objects>
-                <navigationController id="e2L-8Z-7Gc" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="LoginNavigationController" id="e2L-8Z-7Gc" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="xtf-eZ-UBr">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -939,7 +843,11 @@
                         <viewLayoutGuide key="safeArea" id="bdf-mz-Vcv"/>
                     </view>
                     <navigationItem key="navigationItem" title="Groceries List" largeTitleDisplayMode="always" id="IbQ-kr-LE5">
-                        <barButtonItem key="rightBarButtonItem" title="Log Out" id="s2x-Ze-ND4"/>
+                        <barButtonItem key="rightBarButtonItem" title="Log Out" id="s2x-Ze-ND4">
+                            <connections>
+                                <action selector="logOutButtonAction:" destination="OTv-jg-EBG" id="YC4-Xs-uYv"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="groceriesTableView" destination="tZh-EC-4FV" id="FyA-g0-mU7"/>

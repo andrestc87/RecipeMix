@@ -21,17 +21,7 @@ class DashboardTabBarController: UITabBarController {
         tabBar.barTintColor = RecipeMixUtils.appMainBackgroundColor
         navigationController?.navigationBar.prefersLargeTitles = true
         
-        // Save the User Session
-        saveUserLoginInfo()
     }
-    
-    func saveUserLoginInfo() {
-        let defaults = UserDefaults.standard
-        defaults.set(email, forKey: "email")
-        defaults.set(provider.rawValue, forKey: "provider")
-        defaults.synchronize()
-    }
-
 }
 
 extension UIViewController {

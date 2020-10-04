@@ -164,7 +164,7 @@ class RecipeMixAPIUtils {
             }
         }
         
-        try DataController.shared.viewContext.save()
+        try? DataController.shared.viewContext.save()
     }
     
     func getSavedRecipes() -> [RM_Recipe]{
@@ -209,7 +209,7 @@ class RecipeMixAPIUtils {
             groceryToSave.recipe = recipe
             groceryToSave.complete = false
             groceryToSave.name = ingredient
-            try DataController.shared.viewContext.save()
+            try? DataController.shared.viewContext.save()
         }
     }
     
@@ -243,4 +243,3 @@ class RecipeMixAPIUtils {
         try? DataController.shared.viewContext.save()
     }
 }
-

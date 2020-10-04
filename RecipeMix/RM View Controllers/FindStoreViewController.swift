@@ -33,6 +33,7 @@ class FindStoreViewController: UIViewController, MKMapViewDelegate {
     }
     
     func findStoresNearby() {
+        //Search Params: The Map will filter the locations to be related only to stores that sell food
         let params: [String] = ["convenience store", "food store", "market", "food mart", "grocery store", "supermarket"]
 
         if let location = locationManager.location?.coordinate{

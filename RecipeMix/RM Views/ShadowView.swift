@@ -21,6 +21,4 @@ class ShadowView: UIView {
         self.layer.shadowRadius = 1
         self.layer.masksToBounds = false
     }
-    
-    
 }

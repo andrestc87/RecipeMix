@@ -125,7 +125,6 @@ struct ExtendedIngredients: Codable {
         case metaInformation = "metaInformation"
         case measures = "measures"
     }
-    
 }
 
 struct Measure: Codable {

@@ -153,13 +153,18 @@ class GroceriesListViewController: BaseViewController, UITableViewDelegate, UITa
         header.textLabel?.numberOfLines = 0
     }
 
+    @IBAction func logOutButtonAction(_ sender: Any) {
+        super.signOutButtonAction(sender)
+    }
     
     @IBAction func findStoreButtonAction(_ sender: Any) {
     }
-    
+
 }
 
 extension Array where Element: Hashable {
+    
+    //Getting the unique elements from the ingredients array in order to create the correct structure for having the sections on the table
     func uniqueElements() -> [Element] {
         var seen = Set<Element>()
         var out = [Element]()

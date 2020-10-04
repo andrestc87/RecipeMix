@@ -22,9 +22,7 @@ class RecipeMixClient {
     let recipeMixApiKey = "0aac219d134f4bf2b608ef2aa9dbf070"
     let recipeMixFormat = "json"
     let recipeMixBaseUrl = "https://api.spoonacular.com/recipes"
-    // TODO
-    // This needs to be changed to 100 in the final version
-    let recipeMixRecipesPerCall = 10
+    let recipeMixRecipesPerCall = 100
     let recipeMixSearchRecipeEndpoint = "/random"
     
     func searchRecipeMixRecipes(tags: String, completion: @escaping ([Recipe]?, Error?) -> Void) {

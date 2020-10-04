@@ -122,6 +122,10 @@ class RecipeSelectionViewController: BaseViewController, UITableViewDelegate, UI
             
         }
     }
+    
+    @IBAction func logOutButtonAction(_ sender: Any) {
+        super.signOutButtonAction(sender)
+    }
 
 }
 

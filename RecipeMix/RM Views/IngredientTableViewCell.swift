@@ -9,10 +9,8 @@
 import Foundation
 import UIKit
 
-
 class IngredientTableViewCell: UITableViewCell {
 
-    
     @IBOutlet weak var ingredientLabel: UILabel!
     
 }
